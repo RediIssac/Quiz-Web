@@ -1,8 +1,8 @@
 # Quiz-Website
 
-# to run the frontend
- 1, go to frontend folder directory on your terminal
- 2, type "npm start"
+To run the frontend
+* go to frontend folder directory on your terminal
+* type "npm start"
 
 What does the website do?
 
