@@ -41,8 +41,9 @@ public class quizController {
     QuestionRepository questionsRepository;
 	
 	
-	@GetMapping("/")
-	public String index(ModelMap model) {
+	@GetMapping("/app/startquiz")
+	public Map<String,ArrayList<String>>
+	 index() {
 		
 	 	Iterable<Quiz> allQuizzes = quizRepository.findAll();
 	 	
@@ -63,15 +64,12 @@ public class quizController {
 	 		
 	 	});
 	 	 
-		model.addAttribute("quizzesWithTypes",quizzesWithTypes);
+		// model.addAttribute("quizzesWithTypes",quizzesWithTypes);
 		
-		return "/index";
+		return quizzesWithTypes;
 	}
 	
-
-	
-	
-	@RequestMapping(method=RequestMethod.GET, value="/quizzes/{id}")
+	@RequestMapping(method=RequestMethod.GET, value="/app/quizzes/{id}")
     public String questionsForSelectedQuiz(@PathVariable String id, ModelMap model) {
 		
         if(quizRepository.findById(id).isPresent()) {
@@ -112,24 +110,25 @@ public class quizController {
 		
     } 
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	@RequestMapping(method=RequestMethod.POST, value="/app/quizzes/add")
+    public Map<String, String> save(@RequestBody Quiz quiz) {
     	
+		quizRepository.save(quiz);                     //save quiz and return ID
+		Map<String, String> token = new HashMap<String, String>();
+		token.put("quizId", quiz.getId());
+        return token;
+
+    }	
 	
-	
-	
-	
-	
-	
-	
-	
+	@RequestMapping(method=RequestMethod.POST, value="/app/question/add")
+    public Map<String, String> save(@RequestBody Question question) {
+    	
+		questionsRepository.save(question);                     //save quiz and return ID
+		Map<String, String> token = new HashMap<String, String>();
+		token.put("questionId", question.getId());
+        return token;
+
+    }		
 	
 
 }
