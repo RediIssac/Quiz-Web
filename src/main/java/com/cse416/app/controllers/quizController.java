@@ -63,9 +63,26 @@ public class quizController {
 	 		
 	 		quizzes.add(q);
 	 	});
+<<<<<<< HEAD
 	 	
 
 		return quizzes;
+=======
+	 	 
+		// model.addAttribute("quizzesWithTypes",quizzesWithTypes);
+		
+
+// ============test==============
+
+
+
+
+
+
+
+
+		return quizzesWithTypes;
+>>>>>>> cogitater
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value="/app/quizzes/{id}")
@@ -112,7 +129,7 @@ public class quizController {
 		token.put("questionId", question.getId());
         return token;
 
-    }		
+    }			
 	
 
 }
