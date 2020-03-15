@@ -1,9 +1,8 @@
 import React from 'react';
-// import logo from './logo.svg';
-import Quiz from './components/Quiz'
+import Quiz from './QuizGenerate';
 import './App.css';
 
-function App() {
+function Home() {
   const QuizLinks = [
     {
       title: 'Quiz one',
@@ -21,7 +20,7 @@ function App() {
   ]
 
   return (
-    <div className="App">
+    <div className="Home">
       <nav className="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div className="container">
       <a className="navbar-brand js-scroll-trigger" href="#page-top"></a>
@@ -36,10 +35,10 @@ function App() {
             <a className="nav-link js-scroll-trigger" href="#portfolio">Quizzes</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link js-scroll-trigger" href="#about">Login</a>
+            <a className="nav-link js-scroll-trigger" href="Login">Login</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link js-scroll-trigger" href="#team">Create Account</a>
+            <a className="nav-link js-scroll-trigger" href="SignUp">Create Account</a>
           </li>
           
         </ul>
@@ -53,7 +52,7 @@ function App() {
       <div className="intro-text">
         <div className="intro-lead-in">Welcome to our Quiz Web</div>
         <div className="intro-heading text-uppercase">It is nice to meet you!</div>
-        <a className="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#portfolio">Start Quiz</a>
+        <a className="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="Quizzes">Start Quiz</a>
       </div>
     </div>
   </header>
@@ -106,4 +105,5 @@ function App() {
   );
 }
 
-export default App;
+
+export default Home;
