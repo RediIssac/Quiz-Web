@@ -14,7 +14,7 @@ export default ({ QuizLinks }) => {
             {
                 QuizLinks && QuizLinks.map(({ title, caption }, index) => 
                   <div className="col-md-4 col-sm-6 portfolio-item">
-                    <a className="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+                    <a className="portfolio-link" data-toggle="modal" href="Quizzes">
                         <div className="portfolio-hover">
                             <div className="portfolio-hover-content">
                                 <i className="fa fa-plus fa-3x"></i>
