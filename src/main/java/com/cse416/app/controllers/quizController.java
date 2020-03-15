@@ -66,6 +66,16 @@ public class quizController {
 	 	 
 		// model.addAttribute("quizzesWithTypes",quizzesWithTypes);
 		
+
+// ============test==============
+
+
+
+
+
+
+
+
 		return quizzesWithTypes;
 	}
 	
@@ -128,7 +138,7 @@ public class quizController {
 		token.put("questionId", question.getId());
         return token;
 
-    }		
+    }			
 	
 
 }
