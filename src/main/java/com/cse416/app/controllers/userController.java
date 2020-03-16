@@ -4,6 +4,8 @@ package com.cse416.app.controllers;
 import com.cse416.app.models.Question;
 import com.cse416.app.models.Quiz;
 import com.cse416.app.models.User;
+import com.cse416.app.models.TokenId;
+
 import com.cse416.app.repositories.QuestionRepository;
 import com.cse416.app.repositories.QuizRepository;
 import com.cse416.app.repositories.UserRepository;
@@ -20,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
@@ -31,21 +35,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+@RestController
 public class userController {
 	
 	@Autowired
     UserRepository userRepository;
-   
-	@RequestMapping(method=RequestMethod.POST, value="/home")
+    	
+    @CrossOrigin(origins = "http://localhost:3000/Quizzes")
+	@RequestMapping(method=RequestMethod.POST, value="app/home")
     public User save(@RequestBody User user) {
         userRepository.save(user);
         return user;
     }
-	
-	
-	
-	
-	
-	
-	
+
+    @RequestMapping(method=RequestMethod.POST, value="app/signup")
+    public User signup(@RequestBody User user){
+
+        if(userRepository.existsByEmail(user.getEmail())){
+            User userD = userRepository.findByEmail(user.getEmail());
+            return userD;
+        }
+            userRepository.save(user);
+            return user;
+        
+
+    }
+
+            
 }

@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ public class quizController {
 	@Autowired
     QuestionRepository questionsRepository;
 	
-	
+	@CrossOrigin(origins = "http://localhost:3000/Quizzes")
 	@GetMapping("/app/startquiz")
 	public List<Map<String,String>> index() {
 		
@@ -63,28 +64,10 @@ public class quizController {
 	 		
 	 		quizzes.add(q);
 	 	});
-<<<<<<< HEAD
-	 	
-
-		return quizzes;
-=======
 	 	 
-		// model.addAttribute("quizzesWithTypes",quizzesWithTypes);
-		
-
-// ============test==============
-
-
-
-
-
-
-
-
-		return quizzesWithTypes;
->>>>>>> cogitater
+		return quizzes;
 	}
-	
+	@CrossOrigin(origins = "http://localhost:3000/Quizzes")
 	@RequestMapping(method=RequestMethod.GET, value="/app/quizzes/{id}")
     public List<Map<String,String>>  questionsForSelectedQuiz(@PathVariable String id) {
 		
@@ -110,7 +93,7 @@ public class quizController {
 		
 		
        } 
-	
+	@CrossOrigin(origins = "http://localhost:3000/Quizzes")
 	@RequestMapping(method=RequestMethod.POST, value="/app/quizzes/add")
     public Map<String, String> save(@RequestBody Quiz quiz) {
     	
@@ -120,7 +103,7 @@ public class quizController {
         return token;
 
     }	
-	
+	@CrossOrigin(origins = "http://localhost:3000/Quizzes")
 	@RequestMapping(method=RequestMethod.POST, value="/app/question/add")
     public Map<String, String> save(@RequestBody Question question) {
     	

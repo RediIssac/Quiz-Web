@@ -22,7 +22,7 @@ function Login() {
         token: `Bearer ${res.tokenId}`
       }
       
-      axios.post('/app/login', userData)
+      axios.post('/signup', userData)
       .then(res => {
 
         const tokenId = `Bearer ${res.tokenId}`;
