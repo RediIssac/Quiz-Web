@@ -41,42 +41,56 @@ public class quizController {
     QuestionRepository questionsRepository;
 	
 	
-	@GetMapping("/")
-	public String index(ModelMap model) {
+	@GetMapping("/app/startquiz")
+	public List<Map<String,String>> index() {
 		
 	 	Iterable<Quiz> allQuizzes = quizRepository.findAll();
-	 	
-	 	Map<String,ArrayList<String>> quizzesWithTypes = new HashMap<String,ArrayList<String>>();
 	 	
 	 	List<Quiz> list = new ArrayList<>();
 	 	
 	 	allQuizzes.iterator().forEachRemaining(list::add);
 	 	
+	 	List<Map<String,String>> quizzes = new ArrayList<Map<String,String>>();
+	 	
 	 	list.stream().forEach(quiz -> {
 	 		
-	 		if(!quizzesWithTypes.containsKey(quiz.getType())) {
-				
-				quizzesWithTypes.put(quiz.getType(),new ArrayList<String>());
-			}
-
-	 			quizzesWithTypes.get(quiz.getType()).add(quiz.getName());
+	 		Map<String,String> q = new HashMap<String,String>();
 	 		
+	 		q.put("name", quiz.getName());
+	 		q.put("type", quiz.getId());
+	 		q.put("description", quiz.getDescription());
+	 		q.put("id", quiz.getId());
+	 		
+	 		quizzes.add(q);
 	 	});
+<<<<<<< HEAD
+	 	
+
+		return quizzes;
+=======
 	 	 
-		model.addAttribute("quizzesWithTypes",quizzesWithTypes);
+		// model.addAttribute("quizzesWithTypes",quizzesWithTypes);
 		
-		return "/index";
+
+// ============test==============
+
+
+
+
+
+
+
+
+		return quizzesWithTypes;
+>>>>>>> cogitater
 	}
 	
-
-	
-	
-	@RequestMapping(method=RequestMethod.GET, value="/quizzes/{id}")
-    public String questionsForSelectedQuiz(@PathVariable String id, ModelMap model) {
+	@RequestMapping(method=RequestMethod.GET, value="/app/quizzes/{id}")
+    public List<Map<String,String>>  questionsForSelectedQuiz(@PathVariable String id) {
 		
         if(quizRepository.findById(id).isPresent()) {
         	
-        	Map<String,ArrayList<String>> questionsWithChoices = new HashMap<String,ArrayList<String>>();
+        	List<Map<String,String>> questionsWithChoices = new ArrayList<Map<String,String>>();
         	
         	Iterable<Question> allQuestions = questionsRepository.findAll();
         	
@@ -85,51 +99,37 @@ public class quizController {
         	allQuestions.iterator().forEachRemaining(list::add);
         	
         	list.stream().filter(question -> question.getQuizId().equals(id)).forEach(q -> {
-        		
-        		ArrayList<String> allPossibleAnswers = new ArrayList<String>();
-        		
-        		allPossibleAnswers.add(q.getPossibleAnswer1());
-        		
-        		allPossibleAnswers.add(q.getPossibleAnswer2());
-        		
-        		allPossibleAnswers.add(q.getPossibleAnswer3());
-        		
-        		allPossibleAnswers.add(q.getPossibleAnswer4());
-        		
-        		allPossibleAnswers.add(q.getCorrectAnswer());
-        		
-        		questionsWithChoices.put(q.getQuestion(),allPossibleAnswers);
-        		     
-        	    });
+        		questionsWithChoices.add(q.getFullQuestion());
+        	});
         	
-        	model.addAttribute("quizWithQuestions", questionsWithChoices);
+        	return questionsWithChoices;
         	
-			return "/selectedQuizPage";
-        }
+        	}
+        	
+       return null;
 		
-		return "/pagenotfound";
 		
-		
-    } 
+       } 
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	@RequestMapping(method=RequestMethod.POST, value="/app/quizzes/add")
+    public Map<String, String> save(@RequestBody Quiz quiz) {
     	
+		quizRepository.save(quiz);                     //save quiz and return ID
+		Map<String, String> token = new HashMap<String, String>();
+		token.put("quizId", quiz.getId());
+        return token;
+
+    }	
 	
-	
-	
-	
-	
-	
-	
-	
+	@RequestMapping(method=RequestMethod.POST, value="/app/question/add")
+    public Map<String, String> save(@RequestBody Question question) {
+    	
+		questionsRepository.save(question);                     //save quiz and return ID
+		Map<String, String> token = new HashMap<String, String>();
+		token.put("questionId", question.getId());
+        return token;
+
+    }			
 	
 
 }

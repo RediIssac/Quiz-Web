@@ -2,6 +2,9 @@ package com.cse416.app.models;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import java.util.HashMap;
+import java.util.Map;
+
 
 @Document(collection = "questions")
 
@@ -29,6 +32,23 @@ public class Question {
         this.description = description; // description of the question
         this.correctAnswer = correctAnswer;
 
+    }
+
+    public Map<String,String> getFullQuestion(){
+
+        Map<String, String> fullQuestion = new HashMap<String, String >();
+        
+        fullQuestion.put("question", question);
+        fullQuestion.put("correctAnswer", correctAnswer);
+        fullQuestion.put("description", description);
+        fullQuestion.put("possibleAnswer1", possibleAnswer1);
+        fullQuestion.put("possibleAnswer2", possibleAnswer2);
+        fullQuestion.put("possibleAnswer3", possibleAnswer3);
+        fullQuestion.put("possibleAnswer4", possibleAnswer4);
+        fullQuestion.put("quizId", quizId);
+        fullQuestion.put("id", id);
+
+        return fullQuestion;
     }
     
     public String getQuestion() {

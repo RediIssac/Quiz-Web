@@ -35,6 +35,7 @@ class Header extends Component {
           alert("로그아웃 되었습니다!");
           window.location.href = "/";
         }
+<<<<<<< HEAD
       });
   };
   render() {
@@ -70,4 +71,25 @@ class Header extends Component {
   }
 }
 
+=======
+        return(
+            <div>
+                <Navbar>
+                    <Navbar.Brand href="/">DO I HAVE A Corona?!</Navbar.Brand>
+                    <Navbar.Toggle/>
+                    <Navbar.Collapse className="justify-content-end">
+                        <NavLink to ="/">
+                            <Button style={buttonStyle} variant="primary">Quiz</Button>
+                        </NavLink>
+                        <Button style={buttonStyle} onClic={this.logout} variant="primary">
+                            LogOut
+                        </Button>
+                    </Navbar.Collapse>
+                </Navbar>
+                    <Image src="./img/main.png" fluid/>
+            </div>
+        );
+    }
+}
+>>>>>>> b4c51a6a91e80a3abc6ff311595635d5606a39a6
 export default Header;
