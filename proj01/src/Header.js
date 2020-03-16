@@ -62,3 +62,4 @@ class Header extends Componet{
         );
     }
 }
+export default Header;
