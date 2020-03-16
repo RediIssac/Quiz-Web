@@ -8,8 +8,9 @@ function Nav() {
         color: 'white'
     }
   return (
-    <nav>
-        <h3>Logo</h3>
+    
+    <nav >
+        <h3>Quiz-Web</h3>
         <ul className = "nav-links">
             <Link style= {navstyle} to="/" exact>
             <li>Home</li>
