@@ -1,4 +1,4 @@
-.App {
+.Quizzes{
   text-align: center;
 }
 nav{
@@ -6,7 +6,7 @@ nav{
   justify-content:space-around;
   align-items: center;
   min-height: 10vh;
-  background: rgb(73,79,82);
+  background: lightslategray;
   color: white;
 }
 

@@ -1,8 +1,10 @@
 import React from 'react';
-import Quiz from './QuizGenerate';
+import QuizGenerate from './QuizGenerate';
 import './App.css';
+import Quiz from './Quiz';
 
 function Home() {
+ 
   const QuizLinks = [
     {
       title: 'Quiz one',
@@ -21,7 +23,7 @@ function Home() {
 
   return (
     <div className="Home">
-      <nav className="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    {/* <nav className="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div className="container">
       <a className="navbar-brand js-scroll-trigger" href="#page-top"></a>
       <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,7 +46,7 @@ function Home() {
         </ul>
       </div>
     </div>
-  </nav>
+  </nav> */}
 
   
   <header className="masthead">
@@ -52,7 +54,7 @@ function Home() {
       <div className="intro-text">
         <div className="intro-lead-in">Welcome to our Quiz Web</div>
         <div className="intro-heading text-uppercase">It is nice to meet you!</div>
-        <a className="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="Quizzes">Start Quiz</a>
+        <a className="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="Quizzes/Quiz">Start Quiz</a>
       </div>
     </div>
   </header>
@@ -60,7 +62,7 @@ function Home() {
   
 
   
-  <Quiz QuizLinks={QuizLinks}></Quiz>
+  <QuizGenerate QuizLinks={QuizLinks}></QuizGenerate>
 
   
   <footer className="footer">
