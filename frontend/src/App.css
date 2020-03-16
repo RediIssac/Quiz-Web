@@ -17,3 +17,10 @@ nav{
   align-items: center;
   list-style:none;
 }
+.cad-n{
+  width: 18rem;
+  float: none;
+  margin: 0 auto;
+  padding: 2rem;
+  
+}
