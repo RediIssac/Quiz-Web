@@ -19,9 +19,11 @@ class Quizzes extends Component {
     axios.get('/startquiz')
       // https://randomuser.me/api/
       .then(res => {
-        this.setState({ quizzes: res.data });
-        console.log(Object.values(this.state.quizzes.results[0].name));
-        { Object.values(this.state.quizzes.results[0].name) }
+        // this.setState({ quizzes: res.data });
+        console.log("======res.data======");
+        console.log(res.data);
+        // console.log(Object.values(this.state.quizzes.results[0].name));
+        // { Object.values(this.state.quizzes.results[0].name) }
       });
   }
 
