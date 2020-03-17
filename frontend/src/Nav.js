@@ -7,7 +7,26 @@ function Nav() {
     const navstyle = {
         color: 'white'
     }
-  return (
+    var loggedin;
+
+    if (localStorage.getItem("loggedin") === null) {
+      loggedin = false;
+    }
+    else{
+
+      loggedin = localStorage.getItem('loggedin');
+
+    }
+    
+    
+    const logout = () => {
+      localStorage.removeItem(loggedin);
+      loggedin = false;
+     
+
+    }
+  
+    return (
     
     <nav >
         <h3>Quiz-Web</h3>
@@ -18,12 +37,31 @@ function Nav() {
             <Link style= {navstyle} to="/Quizzes">
             <li>Quizzes</li>
             </Link>
-            <Link style= {navstyle} to="/Login">
-            <li>Login</li>
-            </Link>
-            <Link style= {navstyle} to="/SignUp">
-            <li>SignUp</li>
-            </Link>
+            
+            {
+                !loggedin &&
+            ( <div>                
+                  <Link style= {navstyle} to="/Login">
+                  <li>Login</li>
+                  </Link>
+                  <Link style= {navstyle} to="/SignUp">
+                  <li>SignUp</li>
+                  </Link>
+                  </div>
+      
+               )
+
+
+            }
+
+
+
+            {
+              loggedin &&
+              (
+            <button onClick= {logout} value = "Logout">
+            </button>)
+            }
            
         </ul>
     </nav>

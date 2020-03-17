@@ -12,22 +12,24 @@ function Login() {
   const [errors,setErrors] = useState("");
   const history = useHistory();
 
-
+  
   const handleGoogleResponse = (res) => {
-      console.log(res.profileObj);
+    console.log(res.profileObj);
+   
       
       const userData = {
         name: res.profileObj.name,
         email: res.profileObj.email,
         token: `Bearer ${res.tokenId}`
       }
-      
+     
       axios.post('/signup', userData)
-      .then(res => {
-
-        const tokenId = `Bearer ${res.tokenId}`;
-
+      .then(response => {
+        console.log(`======response.data=====`);
+        const tokenId = `Bearer ${response.tokenId}`;
+        console.log(response.data);
         localStorage.setItem('tokenId', tokenId);
+        localStorage.setItem('loggedin', true);
 
         axios.defaults.headers.common['Authorization'] = tokenId;
 
@@ -35,7 +37,7 @@ function Login() {
         
       })
       .catch((err) => {
-        
+        console.log(`======response.data=====`);
           setErrors(err.response.data);
           console.log(`Errors: {errors}`);
 
@@ -44,11 +46,12 @@ function Login() {
 
   };
 
+
   return (
     <div className="Login">
 
     <div className="card align-items-center cad-n">
-    <img class="card-img-top" src={require('./img/no-img.png')} alt="Card image cap"/>
+    <img className="card-img-top" src={require('./img/no-img.png')} alt="Card image cap"/>
     
       <form>
 

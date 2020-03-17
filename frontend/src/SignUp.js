@@ -33,8 +33,8 @@ function SignUp() {
       .then(res => {
 
         localStorage.setItem('tokenId', tokenId);
-
-          history.push('/');
+        localStorage.setItem('loggedin', true);
+        history.push('/');
         
       })
       .catch((err) => {

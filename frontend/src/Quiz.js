@@ -106,27 +106,45 @@ import "./style.css";
 import quizService from "./quizService";
 import QuestionBox from './QuestionBox';
 import Result from './Result';
+import axios from 'axios';
 
 class Quiz extends Component{
-    state = {
-        questions: [],
-        score: 0,
-        responses:0
-    };
+    constructor(props){
+        super(props);
+        this.state = {
+            questions: [],
+            score: 0,
+            responses:0
+        };
+
+    }
+    // state = {
+    //     questions: [],
+    //     score: 0,
+    //     responses:0
+    // };
 
     getQuestions = () => {
+        
         quizService().then(question => {
             this.setState({
                 questions: question
             });
         });
     };
+    // getQuestions = () => {
+    //     axios.get('http://localhost:8080/app/startquiz'+this.props.match.params.id)
+    //     .then(question => {
+    //         this.setState({
+    //             questions: question
+    //         });
+    //     });
+    // };
     computeAnswer = (answer, correctAnswer) => {
         if (answer === correctAnswer){
              this.setState({
                 score: this.state.score + 1
              });
-            
         }
         this.setState({
             responses: this.state.responses < 5 ? this.state.responses + 1 : 5
@@ -141,8 +159,11 @@ class Quiz extends Component{
         });
     };
     componentDidMount(){
+        
         this.getQuestions();
     }
+
+
     render(){
         return(
             <div className = "container">

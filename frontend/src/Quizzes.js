@@ -15,7 +15,6 @@ class Quizzes extends Component{
     }
 
     componentDidMount() {
-        // axios.get('https://randomuser.me/api/')
         axios.get('http://localhost:8080/app/startquiz')
         // https://randomuser.me/api/
             .then(res => {
