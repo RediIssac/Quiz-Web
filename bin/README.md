@@ -1,17 +1,38 @@
 # Quiz-Website
 
-To run the frontend
-* go to frontend folder directory on your terminal
-* type "npm start"
-
 What does the website do?
 
 It takes some information as a form of an answer to a questionnaire or quiz questions and it calculates the possibility of one getting infected by a corona virus. 
 Quiz List
 
+* Health information
+   Question 1)
+        a)
+        b)
+   ...
+   
+   Question 2)
+    ....
+    
+* Personal habits
+    Question 1)
+        a)
+        b)
+   ...
+    Question 2)
+    ....
+
+* Travel history
+    Question 1)
+        a)
+        b)
+   ...
+    Question 2)
+    ....
+
 
 To do lists
-    
+    List for today due 8:00PM:
 
 * Prepare Requirements: Cogi
 * Make a database design plan: Cogi

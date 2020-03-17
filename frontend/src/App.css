@@ -1,0 +1,26 @@
+.Quizzes{
+  text-align: center;
+}
+nav{
+  display: flex;
+  justify-content:space-around;
+  align-items: center;
+  min-height: 10vh;
+  background: lightslategray;
+  color: white;
+}
+
+.nav-links{
+  width: 20%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style:none;
+}
+.cad-n{
+  width: 18rem;
+  float: none;
+  margin: 0 auto;
+  padding: 2rem;
+  
+}
