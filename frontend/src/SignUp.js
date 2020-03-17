@@ -19,17 +19,20 @@ function SignUp() {
       const userData = {
         name: res.profileObj.name,
         email: res.profileObj.email,
-        token: `Bearer ${res.tokenId}`
+        familyName: res.profileObj.familyName,
+        pictureUrl: res.profileObj.imageUrl
+
       }
-      
-      axios.post('/app/signup', userData)
+
+      const tokenId = `Bearer ${res.tokenId}`;
+
+      // localStorage.setItem('tokenId', tokenId);
+      // axios.defaults.headers.common['Authorization'] = tokenId;
+
+      axios.post('/signup', userData)
       .then(res => {
 
-        const tokenId = `Bearer ${res.tokenId}`;
-
         localStorage.setItem('tokenId', tokenId);
-
-        axios.defaults.headers.common['Authorization'] = tokenId;
 
           history.push('/');
         
