@@ -5,48 +5,48 @@ import './App.css';
 
 import Quiz from './Quiz';
 
-class Quizzes extends Component{
+class Quizzes extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            quizzes: []
-        };
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      quizzes: []
+    };
+  }
 
-    componentDidMount() {
-        // axios.get('https://randomuser.me/api/')
-        axios.get('http://localhost:8080/app/startquiz')
-        // https://randomuser.me/api/
-            .then(res => {
-              this.setState({quizzes: res.data});
-              console.log(Object.values(this.state.quizzes.results[0].name));
-              {Object.values(this.state.quizzes.results[0].name)}
-            });
-    }
-    
-    render() {
-        return (
-          <div className="Quizzes">
-            <h2>Quizzes</h2>
-            {/* {this.state.quizzes.results} */}
-            <ul className= "Topics">
-            <li><Link to = {'/Quizzes/Quiz'}>Quesiton 1</Link></li>
-            <li><Link to = {'/Quizzes/Quiz'}>Question 2</Link></li>
-            <li><Link to = {'/Quizzes/Quiz'}>Question 3</Link></li>
-            {/* <a href="Quizzes/Quiz">Start Quiz</a> */}
-     
-            {/* {Object.values(this.state.quizzes.results[0].name)} */}
-            {/* <ul>
+  componentDidMount() {
+    // axios.get('https://randomuser.me/api/')
+    axios.get('/startquiz')
+      // https://randomuser.me/api/
+      .then(res => {
+        this.setState({ quizzes: res.data });
+        console.log(Object.values(this.state.quizzes.results[0].name));
+        { Object.values(this.state.quizzes.results[0].name) }
+      });
+  }
+
+  render() {
+    return (
+      <div className="Quizzes">
+        <h2>Quizzes</h2>
+        {/* {this.state.quizzes.results} */}
+        <ul className="Topics">
+          <li><Link to={'/Quizzes/Quiz'}>Quesiton 1</Link></li>
+          <li><Link to={'/Quizzes/Quiz'}>Question 2</Link></li>
+          <li><Link to={'/Quizzes/Quiz'}>Question 3</Link></li>
+          {/* <a href="Quizzes/Quiz">Start Quiz</a> */}
+
+          {/* {Object.values(this.state.quizzes.results[0].name)} */}
+          {/* <ul>
               { this.state.quizzes.results[0].name.map(obj => <li>{Object.values(obj)}</li>)}
             </ul> */}
-            {/* <li>{this.state.quizzes.results}</li> */}
-              {/* <li>Biology</li>
-              <li>General Knowledage</li> */}     
-            </ul>
-          </div>
-        );
-    }
+          {/* <li>{this.state.quizzes.results}</li> */}
+          {/* <li>Biology</li>
+              <li>General Knowledage</li> */}
+        </ul>
+      </div>
+    );
+  }
 }
 
 export default Quizzes;
@@ -57,7 +57,7 @@ export default Quizzes;
 // // import './App.css';
 
 // // function Quizzes() {
-  
+
 // //   useEffect() =>{
 
 // //   }
@@ -83,7 +83,7 @@ export default Quizzes;
 // // export default Quizzes;
 //   // constructor(props) {
 //   //   super(props);
-  
+
 //   //   this.state = {
 //   //     counter: 0,
 //   //     questionId: 1,
@@ -98,11 +98,10 @@ export default Quizzes;
 
 //   // componentDidMount() {
 //   //   const shuffledAnswerOptions = quizQuestions.map((question) => this.shuffleArray(question.answers));  
-  
+
 //   //   this.setState({
 //   //     question: quizQuestions[0].question,
 //   //     answerOptions: shuffledAnswerOptions[0]
 //   //   });
 //   // }
 
-  

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import GoogleLogin from "react-google-login";
 import './bootstrap.min.css'
 import axios from 'axios';
@@ -12,7 +12,7 @@ import TextField from '@material-ui/core/TextField';
 
 function Login() {
 
-  const [errors,setErrors] = useState("");
+  const [errors, setErrors] = useState("");
   const history = useHistory();
   const useStyles = makeStyles(theme => ({
     root: {
@@ -24,17 +24,17 @@ function Login() {
   }));
 
   const handleGoogleResponse = (res) => {
-      console.log(res.profileObj);
-      
-      const userData = {
-        name: res.profileObj.name,
-        email: res.profileObj.email,
-        token: `Bearer ${res.tokenId}`
-      }
-      
-      axios.post('/signup', userData)
+    console.log(res.profileObj);
+
+    const userData = {
+      name: res.profileObj.name,
+      email: res.profileObj.email,
+      token: `Bearer ${res.tokenId}`
+    }
+
+    axios.post('/signup', userData)
       .then(res => {
-        const userCredentials =res;
+        const userCredentials = res;
 
         localStorage.getItem('userCredentials', userCredentials);
 
@@ -44,13 +44,13 @@ function Login() {
 
         axios.defaults.headers.common['Authorization'] = tokenId;
 
-          history.push('/');
-        
+        history.push('/');
+
       })
       .catch((err) => {
-        
-          setErrors(err.response.data);
-          console.log(`Errors: {errors}`);
+
+        setErrors(err.response.data);
+        console.log(`Errors: {errors}`);
 
       });
 
@@ -60,54 +60,54 @@ function Login() {
   return (
     <div className="Login">
 
-    <div className="card align-items-center cad-n">
-    <img class="card-img-top" src={require('./img/no-img.png')} alt="Card image cap"/>
-    
-      <form>
+      <div className="card align-items-center cad-n">
+        <img class="card-img-top" src={require('./img/no-img.png')} alt="Card image cap" />
 
-      <p>Sign in with your social media account </p>
-      <GoogleLogin
+        <form>
 
-      clientId="181796502496-d4n1skjr6tq9trd0mp0dp3gdlaasm3hp.apps.googleusercontent.com"
-      buttonText="Sign in with Google"
-      scope='profile email'
-      width='240'
-      height='50'
-      longtitle='true'
-      theme='dark'
+          <p>Sign in with your social media account </p>
+          <GoogleLogin
 
-      onSuccess={handleGoogleResponse}
-      onFailure={handleGoogleResponse}
-      cookiePolicy={"single_host_origin"}
-      />
+            clientId="181796502496-d4n1skjr6tq9trd0mp0dp3gdlaasm3hp.apps.googleusercontent.com"
+            buttonText="Sign in with Google"
+            scope='profile email'
+            width='240'
+            height='50'
+            longtitle='true'
+            theme='dark'
+
+            onSuccess={handleGoogleResponse}
+            onFailure={handleGoogleResponse}
+            cookiePolicy={"single_host_origin"}
+          />
 
 
-      </form>
-      
-    </div>
-    
+        </form>
 
-    <br />
-    <div className="align-items-center cad-n">
-    Don't have an account ? <br /> 
+      </div>
+
+
+      <br />
+      <div className="align-items-center cad-n">
+        Don't have an account ? <br />
     Sign up to <Link to="/SignUp"> create account</Link>
-    <br />
-    {/* <h5>Log in<br/></h5>
+        <br />
+        {/* <h5>Log in<br/></h5>
     <label>ID: <input type ="text" size = "15" value = ""></input></label><br/>
     <label for = "pass"> password :</label>
     <input id = "pass" type = "password " size ="15" value = ""></input>
     <input type = "submit" value ="Login"></input> */}
-    <br />
-    {errors.general && (
+        <br />
+        {errors.general && (
           <p>
             {errors.general}
           </p>
-      )}
+        )}
 
       </div>
     </div>
   );
-  
+
 }
 
 export default Login;
