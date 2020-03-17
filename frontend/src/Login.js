@@ -88,11 +88,11 @@ function Login() {
     Don't have an account ? <br /> 
     Sign up to <Link to="/SignUp"> create account</Link>
     <br />
-    Log in<br/>
-    <label>ID: <input type ="text" size = "15" value = ""></input></label>
+    <h5>Log in<br/></h5>
+    <label>ID: <input type ="text" size = "15" value = ""></input></label><br/>
     <label for = "pass"> password :</label>
     <input id = "pass" type = "password " size ="15" value = ""></input>
-    <input type = "submit" value ="submit"></input>
+    <input type = "submit" value ="Login"></input>
     <br />
     {errors.general && (
           <p>

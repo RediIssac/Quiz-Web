@@ -80,6 +80,13 @@ function SignUp() {
     already have an account ? <br /> 
     Sign in <Link to="/Login"> here</Link>
     <br />
+    <h5>Creat Account<br/></h5>
+    <label>ID: <input type ="text" size = "15" value = ""></input></label><br/>
+    <label for = "pass"> Password :</label>
+    <input id = "text" type = "password " size ="15" value = ""></input><br/>
+    <label for = "pass"> Email Address :</label>
+    <input id = "text" type = "Address " size ="15" value = ""></input>
+    <input type = "submit" value ="Submit"></input>
     <br />
     {errors.general && (
           <p>
