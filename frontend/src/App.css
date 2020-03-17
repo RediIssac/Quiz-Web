@@ -24,3 +24,35 @@ nav{
   padding: 2rem;
   
 }
+body{
+  background-color: rgba(43, 42, 117, 0.384);
+}
+.Portfolio{
+  background-color: rgba(114, 149, 223, 0.568);
+  min-height:  500px;
+  width: 400px;
+  margin: 40px auto;
+}
+#to-do-form input{
+  background-color: reb(27,112,137);
+  border: 0;
+  width: 200px;
+  height: 50px;
+  padding: 0 20px;
+  margin: 20px;
+  font-size: 18px;
+  border-radius: 10px;
+}
+#to-do-form input::placeholder{
+  color: reba(255,255,255,0.5);
+}
+#to-do-form button{
+  height: 50px;
+  width:80px;
+  border-radius: 5px;
+  border: 0;
+  background-color: rgb(64, 108, 150);
+  cursor: pointer;
+  font-weight:bolder;
+  color: #fff;
+}
