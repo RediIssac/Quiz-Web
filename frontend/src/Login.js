@@ -34,6 +34,9 @@ function Login() {
       
       axios.post('/signup', userData)
       .then(res => {
+        const userCredentials =res;
+
+        localStorage.getItem('userCredentials', userCredentials);
 
         const tokenId = `Bearer ${res.tokenId}`;
 
@@ -85,14 +88,15 @@ function Login() {
     
 
     <br />
+    <div className="align-items-center cad-n">
     Don't have an account ? <br /> 
     Sign up to <Link to="/SignUp"> create account</Link>
     <br />
-    <h5>Log in<br/></h5>
+    {/* <h5>Log in<br/></h5>
     <label>ID: <input type ="text" size = "15" value = ""></input></label><br/>
     <label for = "pass"> password :</label>
     <input id = "pass" type = "password " size ="15" value = ""></input>
-    <input type = "submit" value ="Login"></input>
+    <input type = "submit" value ="Login"></input> */}
     <br />
     {errors.general && (
           <p>
@@ -100,7 +104,7 @@ function Login() {
           </p>
       )}
 
-
+      </div>
     </div>
   );
   

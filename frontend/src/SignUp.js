@@ -14,8 +14,12 @@ function SignUp() {
 
 
   const handleGoogleResponse = (res) => {
+    console.log("==============");
       console.log(res.profileObj);
-      
+      console.log("==============");
+
+      console.log(res);
+      console.log("==============");
       const userData = {
         name: res.profileObj.name,
         email: res.profileObj.email,
@@ -51,6 +55,7 @@ function SignUp() {
     <div className="SignUp">
 
     <div className="card align-items-center cad-n">
+
     <img class="card-img-top" src={require('./img/no-img.png')} alt="Card image cap"/>
     
       <form>
@@ -75,18 +80,11 @@ function SignUp() {
       </form>
       
     </div>
-
+    <div className="align-items-center cad-n">
     <br />
     Already have an account ? <br /> 
     Sign in <Link to="/Login"> here</Link>
     <br />
-    <h5>Creat Account<br/></h5>
-    <label>ID: <input type ="text" size = "15" value = ""></input></label><br/>
-    <label for = "pass"> Password :</label>
-    <input id = "text" type = "password " size ="15" value = ""></input><br/>
-    <label for = "pass"> Email Address :</label>
-    <input id = "text" type = "Address " size ="15" value = ""></input>
-    <input type = "submit" value ="Submit"></input>
     <br />
     {errors.general && (
           <p>
@@ -94,7 +92,7 @@ function SignUp() {
           </p>
       )}
 
-
+      </div>
     </div>
   );
 }
