@@ -41,8 +41,7 @@ public class userController {
 	@Autowired
     UserRepository userRepository;
     	
-    @CrossOrigin(origins = "http://localhost:3000/Quizzes")
-	@RequestMapping(method=RequestMethod.POST, value="app/home")
+    @RequestMapping(method=RequestMethod.POST, value="app/home")
     public User save(@RequestBody User user) {
         userRepository.save(user);
         return user;

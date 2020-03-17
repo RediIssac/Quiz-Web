@@ -25,15 +25,26 @@ function Login() {
      
       axios.post('/signup', userData)
       .then(response => {
+<<<<<<< HEAD
         console.log(`======response.data=====`);
         const tokenId = `Bearer ${response.tokenId}`;
         console.log(response.data);
         localStorage.setItem('tokenId', tokenId);
         localStorage.setItem('loggedin', true);
+=======
 
-        axios.defaults.headers.common['Authorization'] = tokenId;
+        console.log('======response======');
+        console.log(response);
 
-          history.push('/');
+        console.log('======response.data======');
+        console.log(response.data);
+        localStorage.setItem('loggedin', true);
+        localStorage.setItem('userCredentials', response.data);
+        console.log("====================");
+>>>>>>> 9f575a83975ab8b8567eab0c25b9c3f614b9707a
+
+        history.push('/');
+
         
       })
       .catch((err) => {
@@ -75,6 +86,7 @@ function Login() {
       </form>
       
     </div>
+    <div className="align-items-center cad-n">
 
     <br />
     dont have an account ? <br /> 
@@ -87,7 +99,7 @@ function Login() {
           </p>
       )}
 
-
+      </div>
     </div>
   );
 }

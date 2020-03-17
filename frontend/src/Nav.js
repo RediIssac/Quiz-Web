@@ -11,6 +11,10 @@ function Nav() {
 
     if (localStorage.getItem("loggedin") === null) {
       loggedin = false;
+<<<<<<< HEAD
+=======
+      localStorage.setItem("loggedin", false);
+>>>>>>> 9f575a83975ab8b8567eab0c25b9c3f614b9707a
     }
     else{
 
@@ -20,9 +24,17 @@ function Nav() {
     
     
     const logout = () => {
+<<<<<<< HEAD
       localStorage.removeItem(loggedin);
       loggedin = false;
      
+=======
+      localStorage.removeItem('loggedin');
+      loggedin = false;
+      localStorage.removeItem('tokenId');
+      localStorage.removeItem('userCredentials');
+      
+>>>>>>> 9f575a83975ab8b8567eab0c25b9c3f614b9707a
 
     }
   
@@ -59,7 +71,11 @@ function Nav() {
             {
               loggedin &&
               (
+<<<<<<< HEAD
             <button onClick= {logout} value = "Logout">
+=======
+            <button onClick={logout} value="LogOut"><li >LogOut</li>
+>>>>>>> 9f575a83975ab8b8567eab0c25b9c3f614b9707a
             </button>)
             }
            
