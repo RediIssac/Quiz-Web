@@ -41,8 +41,6 @@ public class quizController {
 	@Autowired
     QuestionRepository questionsRepository;
 	
-	// @CrossOrigin(origins = "http://localhost:3000/Quizzes")
-	// @GetMapping("/app/startquiz")
 	@RequestMapping(method=RequestMethod.GET, value="/app/startquiz")
 	public List<Map<String,String>> index() {
 		
@@ -68,7 +66,6 @@ public class quizController {
 	 	 
 		return quizzes;
 	}
-	// @CrossOrigin(origins = "http://localhost:3000/Quizzes")
 
 	@RequestMapping(method=RequestMethod.GET, value="/app/quizzes/{id}")
     public List<Map<String,String>>  questionsForSelectedQuiz(@PathVariable String id) {
@@ -95,7 +92,7 @@ public class quizController {
 		
 		
        } 
-	// @CrossOrigin(origins = "http://localhost:3000/Quizzes")
+	
 	@RequestMapping(method=RequestMethod.POST, value="/app/quizzes/add")
     public Map<String, String> save(@RequestBody Quiz quiz) {
     	
@@ -105,7 +102,7 @@ public class quizController {
         return token;
 
     }	
-	// @CrossOrigin(origins = "http://localhost:3000/Quizzes")
+	
 	@RequestMapping(method=RequestMethod.POST, value="/app/question/add")
     public Map<String, String> save(@RequestBody Question question) {
     	
