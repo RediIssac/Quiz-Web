@@ -8,15 +8,15 @@ function Home() {
   const QuizLinks = [
     {
       title: 'Quiz one',
-      caption: 'Math'
+      caption: 'Basic Knowledge Corona-vius'
     },
     {
       title: 'Quiz two',
-      caption: 'Chemistry'
+      caption: 'Preventive Rules'
     },
     {
       title: 'Quiz three',
-      caption: 'Biology'
+      caption: 'Korea coronavirus'
     },
     
   ]

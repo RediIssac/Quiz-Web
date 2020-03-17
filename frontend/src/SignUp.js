@@ -77,7 +77,7 @@ function SignUp() {
     </div>
 
     <br />
-    already have an account ? <br /> 
+    Already have an account ? <br /> 
     Sign in <Link to="/Login"> here</Link>
     <br />
     <h5>Creat Account<br/></h5>
