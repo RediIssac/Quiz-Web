@@ -6,12 +6,22 @@ import { Link } from 'react-router-dom';
 import './App.css';
 import { useHistory } from "react-router-dom";
 
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+
 
 function Login() {
 
   const [errors,setErrors] = useState("");
   const history = useHistory();
-
+  const useStyles = makeStyles(theme => ({
+    root: {
+      '& > *': {
+        margin: theme.spacing(1),
+        width: 200,
+      },
+    },
+  }));
 
   const handleGoogleResponse = (res) => {
       console.log(res.profileObj);
@@ -72,11 +82,17 @@ function Login() {
       </form>
       
     </div>
+    
 
     <br />
-    dont have an account ? <br /> 
+    Don't have an account ? <br /> 
     Sign up to <Link to="/SignUp"> create account</Link>
     <br />
+    Log in<br/>
+    <label>ID: <input type ="text" size = "15" value = ""></input></label>
+    <label for = "pass"> password :</label>
+    <input id = "pass" type = "password " size ="15" value = ""></input>
+    <input type = "submit" value ="submit"></input>
     <br />
     {errors.general && (
           <p>
@@ -87,6 +103,7 @@ function Login() {
 
     </div>
   );
+  
 }
 
 export default Login;

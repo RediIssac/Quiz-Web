@@ -31,9 +31,9 @@ class Quizzes extends Component{
             <h2>Quizzes</h2>
             {/* {this.state.quizzes.results} */}
             <ul className= "Topics">
-            <li><Link to = {'/Quizzes/Quiz'}>Math</Link></li>
-            <li><Link to = {'/Quizzes/Quiz'}>Biology</Link></li>
-            <li><Link to = {'/Quizzes/Quiz'}>General Knowledage</Link></li>
+            <li><Link to = {'/Quizzes/Quiz'}>Quesiton 1</Link></li>
+            <li><Link to = {'/Quizzes/Quiz'}>Question 2</Link></li>
+            <li><Link to = {'/Quizzes/Quiz'}>Question 3</Link></li>
             {/* <a href="Quizzes/Quiz">Start Quiz</a> */}
      
             {/* {Object.values(this.state.quizzes.results[0].name)} */}
