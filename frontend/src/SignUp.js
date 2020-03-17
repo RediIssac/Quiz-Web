@@ -25,16 +25,25 @@ function SignUp() {
       }
 
       const tokenId = `Bearer ${res.tokenId}`;
-
-      // localStorage.setItem('tokenId', tokenId);
+      console.log("=========tokenId===========");
+      console.log(tokenId);
+      
+      localStorage.setItem('tokenId', tokenId);
       // axios.defaults.headers.common['Authorization'] = tokenId;
 
       axios.post('/signup', userData)
-      .then(res => {
+      .then(response => {
 
-        localStorage.setItem('tokenId', tokenId);
+        console.log('======response======');
+        console.log(response);
 
-          history.push('/');
+        console.log('======response.data======');
+        console.log(response.data);
+        localStorage.setItem('loggedin', true);
+        localStorage.setItem('userCredentials', response.data);
+        console.log("====================");
+
+        history.push('/');
         
       })
       .catch((err) => {
@@ -75,7 +84,7 @@ function SignUp() {
       </form>
       
     </div>
-
+    <div className="align-items-center cad-n">
     <br />
     already have an account ? <br /> 
     Sign in <Link to="/Login"> here</Link>
@@ -86,7 +95,7 @@ function SignUp() {
             {errors.general}
           </p>
       )}
-
+    </div>
 
     </div>
   );
