@@ -25,13 +25,13 @@ class Portfolio extends Component {
         axios.get(/*data base site */'https://jsonplaceholder.typicode.com/todos/1').then(user => {
             this.setState({ email: user.data.email, password: user.data.password, name: user.data.name })
         })
+        //여기가 초기화된다 
+        // this.setState({
+        //     email: "",
+        //     password: "",
+        //     name: ""
 
-        this.setState({
-            email: "",
-            password: "",
-            name: ""
-
-        })
+        // })
 
     }
 
@@ -39,7 +39,12 @@ class Portfolio extends Component {
         //리프레시 되는것을 막아주는거 
         e.preventDefault()
 
-        console.log(this.state.password)
+        console.log("========")
+
+        console.log(this.state.email)
+
+        console.log(this.state.name)
+        // console.log(this.state.password)
 
         this.setState({
             email: "",
@@ -50,11 +55,10 @@ class Portfolio extends Component {
 
     onKeyPress = (e) => {
         this.setState({
-            email: e.target.value.email,
-            password: e.target.value.password,
-            name: e.target.value.name
+            [e.target.name]: e.target.value
         })
     }
+
 
     render() {
         const { email, password, name } = this.state // Destructuring
@@ -64,24 +68,29 @@ class Portfolio extends Component {
             <div className="Portfolio">
 
 
-                <div className="align-items-Right cad-n"></div>
-                <h4>Profile</h4>
-                <dt>Email</dt>
-                <dd>{email}</dd>
-                <dt>Password</dt>
-                <dd>{password}</dd>
-                <dt>Name</dt>
-                <dd>{name}</dd>
-                <dt></dt>
+                <div className="align-items-Right cad-n">
+                    <fieldset>
+                        <legend>Portfolio </legend>
+                        <dt>Email</dt>
+                        <dd>{email}</dd>
+                        <dt>Password</dt>
+                        <dd>{password}</dd>
+                        <dt>Name</dt>
+                        <dd>{name}</dd>
+                        <dt></dt>
+                    </fieldset>
+                </div>
                 <header>
                     <form id="to-do-form" onSubmit={this.onPressSubmit}>
-                        <input type="text" placeholder="Type Account" value={email} onChange={this.onKeyPress.e} />
+                        <input type="text" placeholder="Type Your Email" value={email} onChange={this.onKeyPress} name={'email'} />
                         {/* onchange - 값이바뀌는 거 onKeypress 는 키보드누르는  */}
-                        <input type="password" placeholder="Type password" value={password} onChange={this.onKeyPress} />
-                        <input type="text" placeholder="Type your Name" value={name} onChange={this.onKeyPress} />
+                        <input type="password" placeholder="Type Your password" value={password} onChange={this.onKeyPress} name={'password'} />
+                        <input type="text" placeholder="Type your Name" value={name} onChange={this.onKeyPress} name={'name'} />
                         <button type="Edit">Edit</button>
                     </form>
+
                 </header>
+
 
             </div>
         );
