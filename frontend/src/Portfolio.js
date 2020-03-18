@@ -21,11 +21,39 @@ class Portfolio extends Component {
         name: ""
     }
     componentDidMount() {
-        axios.get(/*data base site */'https://jsonplaceholder.typicode.com/todos/1').then(user => {
-            this.setState({ email: user.data.email, password: user.data.password, name: user.data.name })
+        // bring the Database 
+        // axios.get(/*data base site */'https://jsonplaceholder.typicode.com/todos/1').then(user => {
+        //     this.setState({ email: user.data.email, password: user.data.password, name: user.data.name })
+        // })
+
+        this.setState({
+            email: "",
+            password: "",
+            name: ""
+
         })
 
+    }
 
+    onPressSubmit = (e) => {
+        //리프레시 되는것을 막아주는거 
+        e.preventDefault()
+
+        console.log(this.state.password)
+
+        this.setState({
+            email: "",
+            password: "",
+            name: ""
+        })
+    }
+
+    onKeyPress = (e) => {
+        this.setState({
+            email: e.target.value.email,
+            password: e.target.value.password,
+            name: e.target.value.name
+        })
     }
 
     render() {
@@ -44,11 +72,13 @@ class Portfolio extends Component {
                 <dd>{password}</dd>
                 <dt>Name</dt>
                 <dd>{name}</dd>
+                <dt></dt>
                 <header>
-                    <form id="to-do-form">
-                        <input type="text" placeholder="Type Account" />
-                        <input type="text" placeholder="Type password" />
-                        <input type="text" placeholder="Type your Name" />
+                    <form id="to-do-form" onSubmit={this.onPressSubmit}>
+                        <input type="text" placeholder="Type Account" value={email} onChange={this.onKeyPress.e} />
+                        {/* onchange - 값이바뀌는 거 onKeypress 는 키보드누르는  */}
+                        <input type="password" placeholder="Type password" value={password} onChange={this.onKeyPress} />
+                        <input type="text" placeholder="Type your Name" value={name} onChange={this.onKeyPress} />
                         <button type="Edit">Edit</button>
                     </form>
                 </header>
