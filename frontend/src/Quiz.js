@@ -23,27 +23,27 @@ class Quiz extends Component{
     //     responses:0
     // };
 
-    // getQuestions = () => {
-        
-    //     quizService().then(question => {
-    //         this.setState({
-    //             questions: question
-    //         });
-    //     });
-    // };
     getQuestions = () => {
-       console.log(`params  -----${this.props.params}`);
-    //    axios.get(`/quizzes/${this.props.params.match.id}`)
-    //     .then(question => {
-    //         // console.log("This is params", this.props.match.params.id);
-    //         // console.log(this.props.match.params.id);
-    //         // console.log("This is params", this.props.match.params.id);
-    //         this.setState({
-    //             questions: question
-    //         });
-    //         console.log(question);
-    //     });
+        
+        quizService().then(question => {
+            this.setState({
+                questions: question
+            });
+        });
     };
+    // getQuestions = () => {
+    //    console.log(`params  -----${this.props.params}`);
+    // //    axios.get(`/quizzes/${this.props.params.match.id}`)
+    // //     .then(question => {
+    // //         // console.log("This is params", this.props.match.params.id);
+    // //         // console.log(this.props.match.params.id);
+    // //         // console.log("This is params", this.props.match.params.id);
+    // //         this.setState({
+    // //             questions: question
+    // //         });
+    // //         console.log(question);
+    // //     });
+    // };
     computeAnswer = (answer, correctAnswer) => {
         if (answer === correctAnswer){
              this.setState({
