@@ -62,6 +62,23 @@ public class userController {
 		    return userToBeupdated;
 		    }
 
+				@RequestMapping(method=RequestMethod.POST, value="/profile/{id}")
+				public User quizGraded(@PathVariable String id, @RequestBody HashMap<String,String> quizPerformance) {
+					User userToBeupdated = userRepository.findById(id).get();
+						if(quizPerformance.get("totalNumQuizzesTaken") != null) {
+							userToBeupdated.updateTotalNumQuizzesTaken();
+						}
+					if(quizPerformance.get("totalNumQuestionsTaken") != null) {
+							userToBeupdated.updateTotalNumQuestionsTaken(Integer.parseInt(quizPerformance.get("totalNumQuestionsTaken")));
+					}
+					if(quizPerformance.get("totalNumCorrectAttemps") != null) {
+							userToBeupdated.updateTotalNumCorrectAttemps(Integer.parseInt(quizPerformance.get("totalNumCorrectAttemps")));
+					}
+					userRepository.save(userToBeupdated);
+							return userToBeupdated;
+					}
+				}
+
 
 
 
