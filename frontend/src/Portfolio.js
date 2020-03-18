@@ -21,10 +21,10 @@ class Portfolio extends Component {
         name: ""
     }
     componentDidMount() {
-        // bring the Database 
-        // axios.get(/*data base site */'https://jsonplaceholder.typicode.com/todos/1').then(user => {
-        //     this.setState({ email: user.data.email, password: user.data.password, name: user.data.name })
-        // })
+
+        axios.get(/*data base site */'https://jsonplaceholder.typicode.com/todos/1').then(user => {
+            this.setState({ email: user.data.email, password: user.data.password, name: user.data.name })
+        })
 
         this.setState({
             email: "",
