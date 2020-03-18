@@ -37,19 +37,14 @@ function SignUp() {
         console.log('======response======');
         console.log(response);
 
-<<<<<<< HEAD
-        localStorage.setItem('tokenId', tokenId);
-        localStorage.setItem('loggedin', true);
-=======
         console.log('======response.data======');
         console.log(response.data);
         localStorage.setItem('loggedin', true);
         localStorage.setItem('userCredentials', response.data);
         console.log("====================");
-
->>>>>>> 9f575a83975ab8b8567eab0c25b9c3f614b9707a
+         
         history.push('/');
-        
+        window.location.reload(false); 
       })
       .catch((err) => {
         

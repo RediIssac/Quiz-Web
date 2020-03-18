@@ -41,8 +41,7 @@ public class quizController {
 	@Autowired
     QuestionRepository questionsRepository;
 	
-	// @CrossOrigin(origins = "http://localhost:3000/Quizzes")
-	// @GetMapping("/app/startquiz")
+
 	@RequestMapping(method=RequestMethod.GET, value="/app/startquiz")
 	public List<Map<String,String>> index() {
 		
@@ -68,13 +67,16 @@ public class quizController {
 	 	 
 		return quizzes;
 	}
-	// @CrossOrigin(origins = "http://localhost:3000/Quizzes")
+
 
 	@RequestMapping(method=RequestMethod.GET, value="/app/quizzes/{id}")
     public List<Map<String,String>>  questionsForSelectedQuiz(@PathVariable String id) {
-		
-        if(quizRepository.findById(id).isPresent()) {
+		String h = "$%7Bquiz.id%7D";
+		System.out.println("This is id " + id);
+		System.out.println(quizRepository.findAll());
+        //if(quizRepository.findById(id).isPresent()) {
         	
+
         	List<Map<String,String>> questionsWithChoices = new ArrayList<Map<String,String>>();
         	
         	Iterable<Question> allQuestions = questionsRepository.findAll();
@@ -83,19 +85,20 @@ public class quizController {
         	
         	allQuestions.iterator().forEachRemaining(list::add);
         	
-        	list.stream().filter(question -> question.getQuizId().equals(id)).forEach(q -> {
+        	list.stream().filter(question -> question.getQuizId().equals(h)).forEach(q -> {
         		questionsWithChoices.add(q.getFullQuestion());
         	});
-        	
+
+        	System.out.println(questionsWithChoices);
         	return questionsWithChoices;
         	
-        	}
-        	
-       return null;
+        	//}
+       //System.out.println("Not found"); 	
+       //return null;
 		
 		
        } 
-	// @CrossOrigin(origins = "http://localhost:3000/Quizzes")
+	
 	@RequestMapping(method=RequestMethod.POST, value="/app/quizzes/add")
     public Map<String, String> save(@RequestBody Quiz quiz) {
     	
@@ -105,16 +108,14 @@ public class quizController {
         return token;
 
     }	
-	// @CrossOrigin(origins = "http://localhost:3000/Quizzes")
+	
 	@RequestMapping(method=RequestMethod.POST, value="/app/question/add")
-    public Map<String, String> save(@RequestBody Question question) {
+    public Question save(@RequestBody Question question) {
     	
 		questionsRepository.save(question);                     //save quiz and return ID
 		Map<String, String> token = new HashMap<String, String>();
 		token.put("questionId", question.getId());
-        return token;
-
+		return question;
+        // return token;
     }			
-	
-
 }

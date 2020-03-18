@@ -31,7 +31,7 @@ ReactDOM.render(
     <Router>
         <Nav />
         <Route path="/" exact component={Home} />
-        <Route path="/Quizzes/Quiz" component={Quiz} />
+        <Route path='/Quizzes/Quiz/:id' component={Quiz} />
         <Route path="/Quizzes" component={Quizzes} />
         <Route path="/Login" component={Login} />
         <Route path="/SignUp" component={SignUp} />

@@ -1,16 +1,16 @@
 const qBank = [
   {
     question:
-      "When the virus first occurred?   ",
+      "When did corona virus first occurred?   ",
     answers: [" November 2019", " December 2019", " January  2020", " December 2020"],
     correct: " December 2019",
     questionId: "099099"
   },
   {
     question:
-      'Where does Corona first start?',
+      'Where did Corona first start?',
     answers: ["Wuhan, China", "Seoul, Korea", "Beijing , China", "Tokyo, Japan"],
-    correct: "Wuhan, Hubei Province, China",
+    correct: "Wuhan, China",
     questionId: "183452"
   },
   {
@@ -21,7 +21,7 @@ const qBank = [
     questionId: "267908"
   },
   {
-    question: " When was the first death? ",
+    question: " When was the first death reported? ",
     answers: [
       "January 2, 2020",
       "January 7, 2020",
@@ -39,7 +39,7 @@ const qBank = [
   },
   {
     question:
-      "Does it need to wear the mask when we go out?",
+      "Is it neccesary to wear a mask when we go out?",
     answers: [
       "yes",
       "Maybe",
@@ -50,9 +50,9 @@ const qBank = [
   },
   {
     question:
-      'How long we have to wash our hand at least ?',
+      'How long we have to wash our hands?',
     answers: ["30 second ", "10 second ", "15 second ", "20 second "],
-    correct: "30 second ",
+    correct: "20 second ",
     questionId: "648452"
   },
   {

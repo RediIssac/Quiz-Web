@@ -29,10 +29,11 @@
 
 .title {
   position: relative;
-  background-color: rgb(245, 188, 81);
+  background-color: lightslategray;
   color: white;
   padding: 7px;
   font-size: 1.8em;
+  margin: 3px;
   border-radius: 3px;
 }
 
@@ -54,9 +55,9 @@
 .answerBtn {
   position: relative;
   padding: 10px;
-  background-color: rgb(250, 151, 37);
+  background-color: lightslategray;
   display: inline-block;
-  margin: 10px;
+  margin: 14px;
   outline: none;
   border: none;
   font-size: 1em;
@@ -84,7 +85,7 @@
   font-size: 1.4em;
   padding: 10px;
   top: 350px;
-  background-color: rgb(46, 182, 46);
+  background-color: rgb(255, 153, 0);
   color: rgb(255, 255, 255);
   width: 150px;
   left: 0px;

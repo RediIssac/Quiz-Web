@@ -1,9 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import './App.css';
 import { Link } from 'react-router-dom'
 
+
+
 function Nav() {
+
+    // const useForceUpdate = useState()[1];
+  
     const navstyle = {
         color: 'white'
     }
@@ -11,10 +16,8 @@ function Nav() {
 
     if (localStorage.getItem("loggedin") === null) {
       loggedin = false;
-<<<<<<< HEAD
-=======
       localStorage.setItem("loggedin", false);
->>>>>>> 9f575a83975ab8b8567eab0c25b9c3f614b9707a
+      
     }
     else{
 
@@ -23,18 +26,18 @@ function Nav() {
     }
     
     
+    
     const logout = () => {
-<<<<<<< HEAD
-      localStorage.removeItem(loggedin);
-      loggedin = false;
-     
-=======
       localStorage.removeItem('loggedin');
       loggedin = false;
       localStorage.removeItem('tokenId');
       localStorage.removeItem('userCredentials');
+      window.location.reload(false);
+     
       
->>>>>>> 9f575a83975ab8b8567eab0c25b9c3f614b9707a
+      
+      //useState()[1];
+      
 
     }
   
@@ -43,7 +46,7 @@ function Nav() {
     <nav >
         <h3>Quiz-Web</h3>
         <ul className = "nav-links">
-            <Link style= {navstyle} to="/" exact>
+            <Link style= {navstyle} to="/" >
             <li>Home</li>
             </Link>
             <Link style= {navstyle} to="/Quizzes">
@@ -52,17 +55,17 @@ function Nav() {
             
             {
                 !loggedin &&
-            ( <div>                
+            ( <div className = "nav-links">                
                   <Link style= {navstyle} to="/Login">
                   <li>Login</li>
                   </Link>
                   <Link style= {navstyle} to="/SignUp">
-                  <li>SignUp</li>
+                  <li >SignUp</li>
                   </Link>
                   </div>
       
                )
-
+// onClick={handleForceUpdate}
 
             }
 
@@ -71,11 +74,7 @@ function Nav() {
             {
               loggedin &&
               (
-<<<<<<< HEAD
-            <button onClick= {logout} value = "Logout">
-=======
             <button onClick={logout} value="LogOut"><li >LogOut</li>
->>>>>>> 9f575a83975ab8b8567eab0c25b9c3f614b9707a
             </button>)
             }
            
