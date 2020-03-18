@@ -32,20 +32,38 @@ import java.util.Map;
 import java.util.Optional;
 
 public class userController {
-	
+
 	@Autowired
     UserRepository userRepository;
-   
+
 	@RequestMapping(method=RequestMethod.POST, value="/home")
     public User save(@RequestBody User user) {
         userRepository.save(user);
         return user;
     }
-	
-	
-	
-	
-	
-	
-	
+
+		@RequestMapping(method=RequestMethod.PUT, value="/profile/{id}")
+		    public User update(@PathVariable String id, @RequestBody User updatedInfo) {
+				User userToBeupdated = userRepository.findById(id).get();
+				if(updatedInfo.getName() != null) {
+					userToBeupdated.setName(updatedInfo.getName());
+				}
+				if(updatedInfo.getAddress() != null) {
+					userToBeupdated.setAddress(updatedInfo.getAddress());
+				}
+				if(updatedInfo.getCity() != null) {
+					userToBeupdated.setCity(updatedInfo.getCity());
+				}
+				if(updatedInfo.getEmail() != null) {
+					userToBeupdated.setEmail(updatedInfo.getEmail());
+				}
+
+		    userRepository.save(userToBeupdated);
+		    return userToBeupdated;
+		    }
+
+
+
+
+
 }
