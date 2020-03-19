@@ -31,12 +31,15 @@ function Login() {
         console.log('======response.data======');
         console.log(response.data);
         localStorage.setItem('loggedin', true);
-        localStorage.setItem('userCredentials', response.data);
-        console.log("====================");
-
+        console.log(response);
         history.push('/');
         window.location.reload(false); 
-        
+       
+        localStorage.setItem("username", response.data.name);
+        localStorage.setItem("email", response.data.email);
+        localStorage.setItem("totalNumCorrectAttemps", response.data.totalNumCorrectAttemps);
+        localStorage.setItem("id", response.data.id);
+
       })
       .catch((err) => {
         console.log(`======response.data=====`);
@@ -49,10 +52,7 @@ function Login() {
 
         setErrors(err.response.data);
         console.log(`Errors: {errors}`);
-
       });
-
-
   };
 
 
@@ -61,11 +61,6 @@ function Login() {
 
       <div className="card align-items-center cad-n">
         <img className="card-img-top" src={require('./img/no-img.png')} alt="Card image cap"/>
-    
-        
-        {/* <div className="card align-items-center cad-n">
-          <img class="card-img-top" src={require('./img/no-img.png')} alt="Card image cap" /> */}
-
           <form>
 
             <p>Sign in with your social media account </p>
@@ -86,8 +81,6 @@ function Login() {
 
 
           </form>
-
-        {/* </div> */}
       </div>  
       
       <div className="align-items-center cad-n">

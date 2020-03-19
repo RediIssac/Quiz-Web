@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
-
 import './App.css';
 import { Link } from 'react-router-dom'
+import { useHistory } from "react-router-dom";
+
 
 function Nav() {
+  const history = useHistory();
   const navstyle = {
     color: 'white'
   }
@@ -21,12 +23,13 @@ function Nav() {
 
 
   const logout = () => {
+    
     localStorage.removeItem('loggedin');
     loggedin = false;
     localStorage.removeItem('tokenId');
     localStorage.removeItem('userCredentials');
-    window.location.reload(false); 
-   
+    
+    history.push('/')
   }
 
   return (
