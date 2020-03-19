@@ -22,8 +22,8 @@ You can also create account and safe your user information.
 
 #Modified Requirements
 
-We did google authentication and hence we don't require the user to enter their username and password rather we directly connect them
-to google sign up or Login in. This means we don't have access to let them edit their password, therefore we have modified the profile
+We did google authentication and hence we don't require the user to enter their username and password, rather we directly connect them
+to google sign up. This means we don't have access to let them edit their password, therefore we have modified the profile
 edit page where the user can only edit their email and user name but not password.
 
 
