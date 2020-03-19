@@ -41,12 +41,14 @@ public class userController {
 	@Autowired
     UserRepository userRepository;
 
+    //save user
     @RequestMapping(method=RequestMethod.POST, value="app/home")
     public User save(@RequestBody User user) {
         userRepository.save(user);
         return user;
     }
 
+	 //update profile information of the user
 		@RequestMapping(method=RequestMethod.PUT, value="/profile/{id}")
 	    public User update(@PathVariable String id, @RequestBody User updatedInfo) {
 			User userToBeupdated = userRepository.findById(id).get();
@@ -67,6 +69,7 @@ public class userController {
 	        return userToBeupdated;
 	    }
 
+     //update quiz performance
 		@RequestMapping(method=RequestMethod.POST, value="/profile/{id}")
 		public User quizGraded(@PathVariable String id, @RequestBody HashMap<String,String> quizPerformance) {
 			User userToBeupdated = userRepository.findById(id).get();
