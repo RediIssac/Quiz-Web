@@ -14,19 +14,6 @@ import SignUp from './SignUp';
 import Portfolio from './Portfolio'
 import Quiz from './Quiz';
 
-// ReactDOM.render(
-// <Router>
-//   <div className="App">
-//     <Nav />
-//     <Switch>
-
-//       <Route path="/" exact component={Home} />
-//       <Route path="/Quiz" component={Quiz} />
-//       <Route path="/Login" component={Login}/>
-//       <Route path="/SignUp" component={SignUp}/>
-//     </Switch>
-//   </div>
-// </Router>, document.getElementById('root'));
 ReactDOM.render(
     <Router>
         <Nav />
