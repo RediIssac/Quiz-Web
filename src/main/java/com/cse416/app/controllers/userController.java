@@ -48,7 +48,7 @@ public class userController {
         return user;
     }
 
-    //show profile of the user
+   //show profile of the user
 		@RequestMapping(method=RequestMethod.GET, value="app/profile_info/{id}")
     public HashMap<String,String> show(@PathVariable String id) {
 			  User user = userRepository.findById(id).get();
@@ -57,9 +57,9 @@ public class userController {
 				userInfoToBeDisplayed.put("familyname",user.getFamilyName());
 				userInfoToBeDisplayed.put("email",user.getEmail());
 				userInfoToBeDisplayed.put("pictureUrl",user.getPictureUrl());
-				userInfoToBeDisplayed.put("totalNumQuizzesTaken",user.getTotalNumQuizzesTaken());
-				userInfoToBeDisplayed.put("totalNumQuestionsTaken",user.getTotalNumQuestionsTaken());
-				userInfoToBeDisplayed.put("totalNumCorrectAttemps",user.getTotalNumCorrectAttemps());
+				userInfoToBeDisplayed.put("totalNumQuizzesTaken", Integer.toString(user.getTotalNumQuizzesTaken()));
+				userInfoToBeDisplayed.put("totalNumQuestionsTaken",Integer.toString(user.getTotalNumQuestionsTaken()));
+				userInfoToBeDisplayed.put("totalNumCorrectAttemps",Integer.toString(user.getTotalNumCorrectAttemps()));
 				return userInfoToBeDisplayed;
     }
 
