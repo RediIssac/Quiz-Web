@@ -6,8 +6,8 @@ To run this project
  # >mongod
      
 * Then run the backend spring boot
-     *In windows - go to git bash terminal and type "./mvnw spring-boot:run"
-     *In Linux the above command works in a normal terminal
+     * In windows - go to git bash terminal and type "./mvnw spring-boot:run"
+     * In Linux the above command works in a normal terminal
 # >./mvnw spring-boot:run
      
 * Run the frontend
