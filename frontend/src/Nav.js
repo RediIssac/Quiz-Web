@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 
 
 function Nav() {
-  const history = useHistory();
+  //const history = useHistory();
   const navstyle = {
     color: 'white'
   }
@@ -28,8 +28,8 @@ function Nav() {
     loggedin = false;
     localStorage.removeItem('tokenId');
     localStorage.removeItem('userCredentials');
-    
-    history.push('/')
+    window.location.reload(false); 
+   
   }
 
   return (
