@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
@@ -41,7 +42,10 @@ public class quizController {
     QuestionRepository questionsRepository;
 
 
-	@GetMapping("/app/startquiz")
+
+  //all quizzes in the database sent to the front-end on get request
+	@RequestMapping(method=RequestMethod.GET, value="/app/startquiz")
+
 	public List<Map<String,String>> index() {
 
 	 	Iterable<Quiz> allQuizzes = quizRepository.findAll();
@@ -67,6 +71,7 @@ public class quizController {
 
 		return quizzes;
 	}
+
 
 	@RequestMapping(method=RequestMethod.GET, value="/app/quizzes/{id}")
     public List<Map<String,String>>  questionsForSelectedQuiz(@PathVariable String id) {
@@ -104,21 +109,16 @@ public class quizController {
 
     }
 
-		@RequestMapping(method=RequestMethod.POST, value="/app/quizzes/delete")
-	    public void delete(@RequestBody Quiz quiz) {
-	    	 quizRepository.delete(quiz);
 
-	    }
 
+	
 	@RequestMapping(method=RequestMethod.POST, value="/app/question/add")
-    public Map<String, String> save(@RequestBody Question question) {
+    public Question save(@RequestBody Question question) {
+		     questionsRepository.save(question);                     //save quiz and return ID
+	 	      Map<String, String> token = new HashMap<String, String>();
+		      token.put("questionId", question.getId());
 
-		questionsRepository.save(question);                     //save quiz and return ID
-		Map<String, String> token = new HashMap<String, String>();
-		token.put("questionId", question.getId());
-        return token;
-
+           return token;
     }
-
 
 }
