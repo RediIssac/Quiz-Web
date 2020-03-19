@@ -64,7 +64,7 @@ public class userController {
     }
 
 	 //update profile information of the user
-		@RequestMapping(method=RequestMethod.PUT, value="/profile/{id}")
+		@RequestMapping(method=RequestMethod.PUT, value="app/profile/{id}")
 	    public User update(@PathVariable String id, @RequestBody User updatedInfo) {
 						User userToBeupdated = userRepository.findById(id).get();
 						if(updatedInfo.getName() != null) {
