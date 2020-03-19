@@ -37,72 +37,15 @@ import java.util.Optional;
 
 @RestController
 public class userController {
-
+	
 	@Autowired
     UserRepository userRepository;
-
-    //save user
-    @RequestMapping(method=RequestMethod.POST, value="app/save")
+    	
+    @RequestMapping(method=RequestMethod.POST, value="app/home")
     public User save(@RequestBody User user) {
         userRepository.save(user);
         return user;
     }
-
-    //show profile of the user
-		@RequestMapping(method=RequestMethod.GET, value="app/profile_info/{id}")
-    public HashMap<String,String> show(@PathVariable String id) {
-			  User user = userRepository.findById(id).get();
-        HashMap<String,String> userInfoToBeDisplayed = new HashMap<String,String>();
-				userInfoToBeDisplayed.put("name",user.getName());
-				userInfoToBeDisplayed.put("familyname",user.getFamilyName());
-				userInfoToBeDisplayed.put("email",user.getEmail());
-				userInfoToBeDisplayed.put("pictureUrl",user.getPictureUrl());
-				userInfoToBeDisplayed.put("totalNumQuizzesTaken",user.getTotalNumQuizzesTaken());
-				userInfoToBeDisplayed.put("totalNumQuestionsTaken",user.getTotalNumQuestionsTaken());
-				userInfoToBeDisplayed.put("totalNumCorrectAttemps",user.getTotalNumCorrectAttemps());
-				return userInfoToBeDisplayed;
-    }
-
-	 //update profile information of the user
-		@RequestMapping(method=RequestMethod.PUT, value="app/profile/{id}")
-	    public User update(@PathVariable String id, @RequestBody User updatedInfo) {
-						User userToBeupdated = userRepository.findById(id).get();
-						if(updatedInfo.getName() != null) {
-							userToBeupdated.setName(updatedInfo.getName());
-						}
-						if(updatedInfo.getFamilyName() != null) {
-							userToBeupdated.setFamilyName(updatedInfo.getFamilyName());
-						}
-						if(updatedInfo.getEmail() != null) {
-							userToBeupdated.setEmail(updatedInfo.getEmail());
-						}
-						if(updatedInfo.getpictureUrl() != null) {
-							userToBeupdated.setpictureUrl(updatedInfo.getpictureUrl());
-						}
-
-				    userRepository.save(userToBeupdated);
-				    return userToBeupdated;
-				    }
-
-     //update quiz performance
-		@RequestMapping(method=RequestMethod.POST, value="app/profile/{id}")
-		public void quizGraded(@PathVariable String id, @RequestBody HashMap<String,String> quizPerformance) {
-					User userToBeupdated = userRepository.findById(id).get();
-				  if(quizPerformance.get("totalNumQuizzesTaken") != null) {
-							userToBeupdated.setTotalNumQuizzesTaken(userToBeupdated.get("totalNumQuizzesTaken") + 1);
-						}
-					if(quizPerformance.get("totalNumQuestionsTaken") != null) {
-					    userToBeupdated.setTotalNumQuestionsTaken(Integer.parseInt(quizPerformance.get("totalNumQuestionsTaken")) +
-							                             userToBeupdated.getTotalNumQuestionsTaken()));
-					}
-					if(quizPerformance.get("totalNumCorrectAttemps") != null) {
-					    userToBeupdated.updateTotalNumCorrectAttemps(Integer.parseInt(quizPerformance.get("totalNumCorrectAttemps")) +
-							                                                                 userToBeupdated.getTotalNumCorrectAttemps()));
-					}
-					userRepository.save(userToBeupdated);
-			    
-					}
-		}
 
     @RequestMapping(method=RequestMethod.POST, value="app/signup")
     public User signup(@RequestBody User user){
@@ -113,10 +56,9 @@ public class userController {
         }
             userRepository.save(user);
             return user;
-
+        
 
     }
 
-
+            
 }
-
