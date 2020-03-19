@@ -3,16 +3,16 @@
 To run this project
 * First run the database 
      * Go to the bin folder of Mongodb directory in your terminal and type "mongod" which runs the database
-     # mongod
+ # >mongod
      
 * Then run the backend spring boot
      *In windows - go to git bash terminal and type "./mvnw spring-boot:run"
      *In Linux the above command works in a normal terminal
-     #./mvnw spring-boot:run
+# >./mvnw spring-boot:run
      
 * Run the frontend
     Go to frontend folder directory in the Quiz-web repository you clonned in your terminal and type "npm start"
-   #"npm start"
+   # >npm start
    
 
 #What the web-app does?
