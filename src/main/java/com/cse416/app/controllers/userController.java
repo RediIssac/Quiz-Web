@@ -48,7 +48,7 @@ public class userController {
         return user;
     }
 
-
+    //show profile of the user
 		@RequestMapping(method=RequestMethod.GET, value="app/profile_info/{id}")
     public HashMap<String,String> show(@PathVariable String id) {
 			  User user = userRepository.findById(id).get();
@@ -86,7 +86,7 @@ public class userController {
 
      //update quiz performance
 		@RequestMapping(method=RequestMethod.POST, value="app/profile/{id}")
-		public User quizGraded(@PathVariable String id, @RequestBody HashMap<String,String> quizPerformance) {
+		public void quizGraded(@PathVariable String id, @RequestBody HashMap<String,String> quizPerformance) {
 					User userToBeupdated = userRepository.findById(id).get();
 				  if(quizPerformance.get("totalNumQuizzesTaken") != null) {
 							userToBeupdated.setTotalNumQuizzesTaken(userToBeupdated.get("totalNumQuizzesTaken") + 1);
@@ -100,7 +100,7 @@ public class userController {
 							                                                                 userToBeupdated.getTotalNumCorrectAttemps()));
 					}
 					userRepository.save(userToBeupdated);
-			        return userToBeupdated;
+			    
 					}
 		}
 
@@ -119,3 +119,4 @@ public class userController {
 
 
 }
+

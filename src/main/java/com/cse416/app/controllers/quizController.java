@@ -45,6 +45,7 @@ public class quizController {
 
   //all quizzes in the database sent to the front-end on get request
 	@RequestMapping(method=RequestMethod.GET, value="/app/startquiz")
+
 	public List<Map<String,String>> index() {
 
 	 	Iterable<Quiz> allQuizzes = quizRepository.findAll();
@@ -67,17 +68,15 @@ public class quizController {
 	 		quizzes.add(q);
 	 	});
 
+
 		return quizzes;
 	}
 
 
-
-  //given a quiz id, the quiz to be taken gets identified and sent to the user
 	@RequestMapping(method=RequestMethod.GET, value="/app/quizzes/{id}")
     public List<Map<String,String>>  questionsForSelectedQuiz(@PathVariable String id) {
 
         if(quizRepository.findById(id).isPresent()) {
-
 
         	List<Map<String,String>> questionsWithChoices = new ArrayList<Map<String,String>>();
 
@@ -90,7 +89,6 @@ public class quizController {
         	list.stream().filter(question -> question.getQuizId().equals(id)).forEach(q -> {
         		questionsWithChoices.add(q.getFullQuestion());
         	});
-
 
         	return questionsWithChoices;
 
@@ -111,13 +109,16 @@ public class quizController {
 
     }
 
+
+
+	
 	@RequestMapping(method=RequestMethod.POST, value="/app/question/add")
     public Question save(@RequestBody Question question) {
+		     questionsRepository.save(question);                     //save quiz and return ID
+	 	      Map<String, String> token = new HashMap<String, String>();
+		      token.put("questionId", question.getId());
 
-		questionsRepository.save(question);                     //save quiz and return ID
-		Map<String, String> token = new HashMap<String, String>();
-		token.put("questionId", question.getId());
-		return question;
-        // return token;
+           return token;
     }
+
 }
