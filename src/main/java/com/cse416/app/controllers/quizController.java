@@ -42,6 +42,8 @@ public class quizController {
     QuestionRepository questionsRepository;
 	
 
+
+
 	@RequestMapping(method=RequestMethod.GET, value="/app/startquiz")
 	public List<Map<String,String>> index() {
 		
@@ -67,6 +69,8 @@ public class quizController {
 	 	 
 		return quizzes;
 	}
+
+
 
 
 	@RequestMapping(method=RequestMethod.GET, value="/app/quizzes/{id}")
