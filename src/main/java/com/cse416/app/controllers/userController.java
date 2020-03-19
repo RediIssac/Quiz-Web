@@ -71,7 +71,7 @@ public class userController {
 							userToBeupdated.setName(updatedInfo.getName());
 						}
 						if(updatedInfo.getFamilyName() != null) {
-							userToBeupdated.setAddress(updatedInfo.getFamilyName());
+							userToBeupdated.setFamilyName(updatedInfo.getFamilyName());
 						}
 						if(updatedInfo.getEmail() != null) {
 							userToBeupdated.setEmail(updatedInfo.getEmail());
