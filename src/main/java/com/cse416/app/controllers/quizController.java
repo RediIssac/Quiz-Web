@@ -34,91 +34,88 @@ import java.util.Optional;
 
 @RestController
 public class quizController {
-
+	
 	@Autowired
     QuizRepository quizRepository;
-
+	
 	@Autowired
     QuestionRepository questionsRepository;
+	
 
-
-
-  //all quizzes in the database sent to the front-end on get request
 	@RequestMapping(method=RequestMethod.GET, value="/app/startquiz")
-
 	public List<Map<String,String>> index() {
-
+		
 	 	Iterable<Quiz> allQuizzes = quizRepository.findAll();
-
+	 	
 	 	List<Quiz> list = new ArrayList<>();
-
+	 	
 	 	allQuizzes.iterator().forEachRemaining(list::add);
-
+	 	
 	 	List<Map<String,String>> quizzes = new ArrayList<Map<String,String>>();
-
+	 	
 	 	list.stream().forEach(quiz -> {
-
+	 		
 	 		Map<String,String> q = new HashMap<String,String>();
-
+	 		
 	 		q.put("name", quiz.getName());
 	 		q.put("type", quiz.getId());
 	 		q.put("description", quiz.getDescription());
 	 		q.put("id", quiz.getId());
-
+	 		
 	 		quizzes.add(q);
 	 	});
-
-
+	 	 
 		return quizzes;
 	}
 
 
 	@RequestMapping(method=RequestMethod.GET, value="/app/quizzes/{id}")
     public List<Map<String,String>>  questionsForSelectedQuiz(@PathVariable String id) {
-
-        if(quizRepository.findById(id).isPresent()) {
+		String h = "$%7Bquiz.id%7D";
+		System.out.println("This is id " + id);
+		System.out.println(quizRepository.findAll());
+        //if(quizRepository.findById(id).isPresent()) {
+        	
 
         	List<Map<String,String>> questionsWithChoices = new ArrayList<Map<String,String>>();
-
+        	
         	Iterable<Question> allQuestions = questionsRepository.findAll();
-
+        	
         	List<Question> list = new ArrayList<>();
-
+        	
         	allQuestions.iterator().forEachRemaining(list::add);
-
-        	list.stream().filter(question -> question.getQuizId().equals(id)).forEach(q -> {
+        	
+        	list.stream().filter(question -> question.getQuizId().equals(h)).forEach(q -> {
         		questionsWithChoices.add(q.getFullQuestion());
         	});
 
+        	System.out.println(questionsWithChoices);
         	return questionsWithChoices;
-
-        	}
-
-       return null;
-
-
-       }
-
+        	
+        	//}
+       //System.out.println("Not found"); 	
+       //return null;
+		
+		
+       } 
+	
 	@RequestMapping(method=RequestMethod.POST, value="/app/quizzes/add")
     public Map<String, String> save(@RequestBody Quiz quiz) {
-
+    	
 		quizRepository.save(quiz);                     //save quiz and return ID
 		Map<String, String> token = new HashMap<String, String>();
 		token.put("quizId", quiz.getId());
         return token;
 
-    }
-
-
-
+    }	
 	
 	@RequestMapping(method=RequestMethod.POST, value="/app/question/add")
     public Question save(@RequestBody Question question) {
-		     questionsRepository.save(question);                     //save quiz and return ID
-	 	      Map<String, String> token = new HashMap<String, String>();
-		      token.put("questionId", question.getId());
-
-           return token;
-    }
-
+    	
+		questionsRepository.save(question);                     //save quiz and return ID
+		Map<String, String> token = new HashMap<String, String>();
+		token.put("questionId", question.getId());
+		return question;
+        // return token;
+    }			
 }
