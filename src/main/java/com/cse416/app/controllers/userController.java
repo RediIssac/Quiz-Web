@@ -42,49 +42,66 @@ public class userController {
     UserRepository userRepository;
 
     //save user
-    @RequestMapping(method=RequestMethod.POST, value="app/home")
+    @RequestMapping(method=RequestMethod.POST, value="app/save")
     public User save(@RequestBody User user) {
         userRepository.save(user);
         return user;
     }
 
+
+		@RequestMapping(method=RequestMethod.GET, value="app/profile_info/{id}")
+    public HashMap<String,String> show(@PathVariable String id) {
+			  User user = userRepository.findById(id).get();
+        HashMap<String,String> userInfoToBeDisplayed = new HashMap<String,String>();
+				userInfoToBeDisplayed.put("name",user.getName());
+				userInfoToBeDisplayed.put("familyname",user.getFamilyName());
+				userInfoToBeDisplayed.put("email",user.getEmail());
+				userInfoToBeDisplayed.put("pictureUrl",user.getPictureUrl());
+				userInfoToBeDisplayed.put("totalNumQuizzesTaken",user.getTotalNumQuizzesTaken());
+				userInfoToBeDisplayed.put("totalNumQuestionsTaken",user.getTotalNumQuestionsTaken());
+				userInfoToBeDisplayed.put("totalNumCorrectAttemps",user.getTotalNumCorrectAttemps());
+				return userInfoToBeDisplayed;
+    }
+
 	 //update profile information of the user
 		@RequestMapping(method=RequestMethod.PUT, value="/profile/{id}")
 	    public User update(@PathVariable String id, @RequestBody User updatedInfo) {
-			User userToBeupdated = userRepository.findById(id).get();
-			if(updatedInfo.getName() != null) {
-				userToBeupdated.setName(updatedInfo.getName());
-			}
-			if(updatedInfo.getAddress() != null) {
-				userToBeupdated.setAddress(updatedInfo.getAddress());
-			}
-			if(updatedInfo.getCity() != null) {
-				userToBeupdated.setCity(updatedInfo.getCity());
-			}
-			if(updatedInfo.getEmail() != null) {
-				userToBeupdated.setEmail(updatedInfo.getEmail());
-			}
+						User userToBeupdated = userRepository.findById(id).get();
+						if(updatedInfo.getName() != null) {
+							userToBeupdated.setName(updatedInfo.getName());
+						}
+						if(updatedInfo.getFamilyName() != null) {
+							userToBeupdated.setAddress(updatedInfo.getFamilyName());
+						}
+						if(updatedInfo.getEmail() != null) {
+							userToBeupdated.setEmail(updatedInfo.getEmail());
+						}
+						if(updatedInfo.getpictureUrl() != null) {
+							userToBeupdated.setpictureUrl(updatedInfo.getpictureUrl());
+						}
 
-	        userRepository.save(userToBeupdated);
-	        return userToBeupdated;
-	    }
+				    userRepository.save(userToBeupdated);
+				    return userToBeupdated;
+				    }
 
      //update quiz performance
-		@RequestMapping(method=RequestMethod.POST, value="/profile/{id}")
+		@RequestMapping(method=RequestMethod.POST, value="app/profile/{id}")
 		public User quizGraded(@PathVariable String id, @RequestBody HashMap<String,String> quizPerformance) {
-			User userToBeupdated = userRepository.findById(id).get();
-		    if(quizPerformance.get("totalNumQuizzesTaken") != null) {
-					userToBeupdated.updateTotalNumQuizzesTaken();
-				}
-			if(quizPerformance.get("totalNumQuestionsTaken") != null) {
-			    userToBeupdated.updateTotalNumQuestionsTaken(Integer.parseInt(quizPerformance.get("totalNumQuestionsTaken")));
-			}
-			if(quizPerformance.get("totalNumCorrectAttemps") != null) {
-			    userToBeupdated.updateTotalNumCorrectAttemps(Integer.parseInt(quizPerformance.get("totalNumCorrectAttemps")));
-			}
-			userRepository.save(userToBeupdated);
-	        return userToBeupdated;
-			}
+					User userToBeupdated = userRepository.findById(id).get();
+				  if(quizPerformance.get("totalNumQuizzesTaken") != null) {
+							userToBeupdated.setTotalNumQuizzesTaken(userToBeupdated.get("totalNumQuizzesTaken") + 1);
+						}
+					if(quizPerformance.get("totalNumQuestionsTaken") != null) {
+					    userToBeupdated.setTotalNumQuestionsTaken(Integer.parseInt(quizPerformance.get("totalNumQuestionsTaken")) +
+							                             userToBeupdated.getTotalNumQuestionsTaken()));
+					}
+					if(quizPerformance.get("totalNumCorrectAttemps") != null) {
+					    userToBeupdated.updateTotalNumCorrectAttemps(Integer.parseInt(quizPerformance.get("totalNumCorrectAttemps")) +
+							                                                                 userToBeupdated.getTotalNumCorrectAttemps()));
+					}
+					userRepository.save(userToBeupdated);
+			        return userToBeupdated;
+					}
 		}
 
     @RequestMapping(method=RequestMethod.POST, value="app/signup")
