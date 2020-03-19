@@ -17,33 +17,19 @@ class Quiz extends Component{
         };
 
     }
-    // state = {
-    //     questions: [],
-    //     score: 0,
-    //     responses:0
-    // };
-
+    
     getQuestions = () => {
-        
-        quizService().then(question => {
+       axios.get('/quizzes/'+this.props.match.params.id)
+        .then(question => {
+            console.log("this are questions",question.data);
             this.setState({
-                questions: question
+                questions: question.data
             });
+            console.log("this are ALL", this.state);
         });
     };
-    // getQuestions = () => {
-    //    console.log(`params  -----${this.props.params}`);
-    // //    axios.get(`/quizzes/${this.props.params.match.id}`)
-    // //     .then(question => {
-    // //         // console.log("This is params", this.props.match.params.id);
-    // //         // console.log(this.props.match.params.id);
-    // //         // console.log("This is params", this.props.match.params.id);
-    // //         this.setState({
-    // //             questions: question
-    // //         });
-    // //         console.log(question);
-    // //     });
-    // };
+
+
     computeAnswer = (answer, correctAnswer) => {
         if (answer === correctAnswer){
              this.setState({
@@ -69,19 +55,22 @@ class Quiz extends Component{
 
 
     render(){
+        console.log(this.props.match.params.id);
         return(
+          
             <div className = "container">
                 <div className = "title">Quiz</div>
                 {this.state.questions.length >0 && 
                 this.state.responses < 5 &&
                 this.state.questions.map(
-                    ({question, answers, correct, questionId}) => (
+                    ({question, possibleAnswer1, possibleAnswer2, possibleAnswer3, possibleAnswer4, correctAnswer, id}) => (
                         <QuestionBox 
                             question = {question}
-                            options={answers}
-                            key={questionId}
-                            selected = {answer => this.computeAnswer(answer, correct)}
+                            options={[possibleAnswer1, possibleAnswer2, possibleAnswer3, possibleAnswer4]}
+                            key={id}
+                            selected = {answer => this.computeAnswer(answer, correctAnswer)}
                         />))  
+                   
                 }
                 {this.state.responses === 5 ? (<Result score = {this.state.score} playAgain = {this.playAgain}/>
                 ): null}
