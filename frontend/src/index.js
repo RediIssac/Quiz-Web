@@ -31,7 +31,7 @@ ReactDOM.render(
     <Router>
         <Nav />
         <Route path="/" exact component={Home} />
-        <Route path="/Quizzes/Quiz" component={Quiz} />
+        <Route path='/Quizzes/Quiz/:id' component={Quiz} />
         <Route path="/Quizzes" component={Quizzes} />
         <Route path="/Login" component={Login} />
         <Route path="/SignUp" component={SignUp} />
@@ -39,7 +39,7 @@ ReactDOM.render(
 
     </Router>, document.getElementById('root'));
 
-// If you want your app to work offline and load faster, you can change
+// If you want your app to work offline and load faster, you can changes
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();

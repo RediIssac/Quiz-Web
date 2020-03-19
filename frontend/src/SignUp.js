@@ -42,9 +42,9 @@ function SignUp() {
         localStorage.setItem('loggedin', true);
         localStorage.setItem('userCredentials', response.data);
         console.log("====================");
-
+         
         history.push('/');
-        
+        window.location.reload(false); 
       })
       .catch((err) => {
         

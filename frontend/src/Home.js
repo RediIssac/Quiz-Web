@@ -45,14 +45,14 @@ function Home() {
           <li className="nav-item">
             <a className="nav-link js-scroll-trigger" href="#portfolio">Quizzes</a>
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <a className="nav-link js-scroll-trigger" href="Login">Login</a>
           </li>
           <li className="nav-item">
             <a className="nav-link js-scroll-trigger" href="SignUp">Create Account</a>
-          </li>
+          </li> */}
           
-        </ul>
+        {/* </ul>
       </div>
     </div>
   </nav> */}

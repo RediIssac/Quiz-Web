@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
+import quizService from "./quizService";
 
 import Quiz from './Quiz';
 
@@ -16,35 +17,69 @@ class Quizzes extends Component {
 
   componentDidMount() {
     // axios.get('https://randomuser.me/api/')
+    // axios.post('/question/add', {
+    //   quizId: "$%7Bquiz.id%7D",
+    //   question: "Which sign of the zodiac is represented by the Crab?",
+    //   possibleAnswer1: "Cancer",
+    //   possibleAnswer2: "Libra",
+    //   possibleAnswer3:  "Virgo",
+    //   possibleAnswer4:  "Sagittarius",
+    //   correctAnswer: "Cancer",
+    //   description: "",
+    // })
     axios.get('/startquiz')
+
       // https://randomuser.me/api/
       .then(res => {
-        // this.setState({ quizzes: res.data });
+        // getQuestions = () => {
+        // 
+      //     quizService().then(question => {
+      //         this.setState({
+      //             questions: question
+      //         });
+      //     });
+      //  };
+
+        this.setState({ quizzes: res.data });
         console.log("======res.data======");
+        
         console.log(res.data);
-        // console.log(Object.values(this.state.quizzes.results[0].name));
+
+        console.log("======res.data======");
+        // this.state.
+        // console.log(this.state.quizzes);
         // { Object.values(this.state.quizzes.results[0].name) }
       });
   }
 
   render() {
+    // const QuizItems =  this.state.quizzes.map((quiz, key) => <li key={quiz.id}>{quiz.name}</li>);
+   
     return (
+      
       <div className="Quizzes">
         <h2>Quizzes</h2>
         {/* {this.state.quizzes.results} */}
         <ul className="Topics">
-          <li><Link to={'/Quizzes/Quiz'}>Quesiton 1</Link></li>
-          <li><Link to={'/Quizzes/Quiz'}>Question 2</Link></li>
-          <li><Link to={'/Quizzes/Quiz'}>Question 3</Link></li>
-          {/* <a href="Quizzes/Quiz">Start Quiz</a> */}
+          {this.state.quizzes.map(quiz => <li key={quiz.id}><Link to={`/Quizzes/Quiz/${quiz.id}`}>
+          {quiz.name}</Link></li>
+          )}
+     {/* </li>}
+     //${quiz.id}
+        // <Link to="/Quizzes/Quiz">
+        // <li>{QuizItems}</li>
+        // </Link> */}
+         
+          {/* <a href="Quizzes/Quiz">Start Quiz</a>
 
-          {/* {Object.values(this.state.quizzes.results[0].name)} */}
+          // {/* {Object.values(this.state.quizzes.results[0].name)} */}
           {/* <ul>
-              { this.state.quizzes.results[0].name.map(obj => <li>{Object.values(obj)}</li>)}
-            </ul> */}
+          //   {QuizItems}
+
+          // </ul> */}
           {/* <li>{this.state.quizzes.results}</li> */}
           {/* <li>Biology</li>
-              <li>General Knowledage</li> */}
+          //     <li>General Knowledage</li> */}
         </ul>
       </div>
     );
@@ -53,57 +88,4 @@ class Quizzes extends Component {
 
 export default Quizzes;
 
-
-// // import React, {useState, useEffect} from 'react';
-
-// // import './App.css';
-
-// // function Quizzes() {
-
-// //   useEffect() =>{
-
-// //   }
-
-// //   const fetchItems = async () =>{
-// //     const data = await fetch(http://localhost/3000/test.htm')
-// //   }
-
-
-// //// {this.state.quizzes.results[0].map(quiz =>
-// //<li key={quiz.id}>
-// //{/* <li><Link to={`/Quiz/${quiz.id}`}>{quiz.name[0]}</Link></li> */}
-// //</li>
-// //)}
-// //   return (
-// //     <div className="Quizzes">
-// //       <h1>Quizzes</h1>
-
-// //     </div>
-// //   );
-// // }
-
-// // export default Quizzes;
-//   // constructor(props) {
-//   //   super(props);
-
-//   //   this.state = {
-//   //     counter: 0,
-//   //     questionId: 1,
-//   //     question: '',
-//   //     answerOptions: [],
-//   //     answer: '',
-//   //     answersCount: {},
-//   //     result: ''
-//   //   };
-//   //   // this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
-//   // }
-
-//   // componentDidMount() {
-//   //   const shuffledAnswerOptions = quizQuestions.map((question) => this.shuffleArray(question.answers));  
-
-//   //   this.setState({
-//   //     question: quizQuestions[0].question,
-//   //     answerOptions: shuffledAnswerOptions[0]
-//   //   });
-//   // }
-
+ {/* { this.state.quizzes.results[0].name.map(obj => <li>{Object.values(obj)}</li>)} */}
