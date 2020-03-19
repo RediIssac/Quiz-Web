@@ -6,7 +6,7 @@ import QuestionBox from './QuestionBox';
 import Result from './Result';
 import axios from 'axios';
 
-import { Link } from 'react-router-dom';
+
 
 class Quiz extends Component{
     constructor(props){
@@ -49,6 +49,9 @@ class Quiz extends Component{
             responses: 0
         });
     };
+
+    
+
     componentDidMount(){
         
         this.getQuestions();

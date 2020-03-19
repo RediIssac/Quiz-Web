@@ -60,7 +60,7 @@ function SignUp() {
     <div className="SignUp">
 
     <div className="card align-items-center cad-n">
-    <img class="card-img-top" src={require('./img/no-img.png')} alt="Card image cap"/>
+    <img className="card-img-top" src={require('./img/no-img.png')} alt="Card image cap"/>
     
       <form>
 

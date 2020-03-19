@@ -22,13 +22,27 @@
 // export default Result;
 import React from "react";
 
+
+const scoreSummary = () =>{
+  if(this.score == 5){
+    return <div>Great job :)))</div>
+  }
+  else{
+    return <div>You can always do better next time :)))</div>
+  };
+};
+
+
 const Result = ({score, playAgain}) => (
   <div className="score-board">
-    <div className="score">You scored {score} / 5 correct answers!</div>
+    <div className="score">You scored {score} / 5 correct answers! </div>
     <button className="playBtn" onClick={playAgain}>
       Play again!
     </button>
+    {/* <div> Here is your summary{scoreSummary}</div> */}
   </div>
+  
 );
+
 
 export default Result;
