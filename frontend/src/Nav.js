@@ -57,9 +57,9 @@ function Nav() {
           (
             <div className="nav-links">
               <Link style={navstyle} to="/Portfolio">
-                <li>Porofile</li>
+                <li>Profile</li>
               </Link>
-              <Link to = "/" onClick={logout} value="LogOut" ><li >LogOut</li>
+              <Link to = "/" onClick={logout} value="LogOut" ><li >Logout</li>
               </Link>
             </div>
           )

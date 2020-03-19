@@ -22,7 +22,7 @@ axios.post('/question/add', {
 
   axios.post('/question/add', {
     quizId: "$%7Bquiz.id%7D",
-    question: "When is the first confirmed coronavirus case in Korea?",
+    question: "What word represents the letter 'T' in the NATO phonetic alphabet?",
     possibleAnswer1: "January 20th", 
     possibleAnswer2: "January 5th",
     possibleAnswer3:"January 10th",
@@ -33,7 +33,7 @@ axios.post('/question/add', {
 
   axios.post('/question/add', {
     quizId: "$%7Bquiz.id%7D",
-    question: "When is the first confirmed coronavirus case in Korea?",
+    question: "Which American president appears on a one dollar bill?",
     possibleAnswer1: "January 20th", 
     possibleAnswer2: "January 5th",
     possibleAnswer3:"January 10th",
@@ -43,7 +43,7 @@ axios.post('/question/add', {
   })
   axios.post('/question/add', {
     quizId: "$%7Bquiz.id%7D",
-    question: "When is the first confirmed coronavirus case in Korea?",
+    question: "What is the name of the Jewish New Year?",
     possibleAnswer1: "January 20th", 
     possibleAnswer2: "January 5th",
     possibleAnswer3:"January 10th",

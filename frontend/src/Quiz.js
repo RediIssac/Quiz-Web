@@ -2,10 +2,11 @@
 import React, {Component} from 'react';
 import ReactDom from "react-dom";
 import "./style.css";
-import quizService from "./quizService";
 import QuestionBox from './QuestionBox';
 import Result from './Result';
 import axios from 'axios';
+
+import { Link } from 'react-router-dom';
 
 class Quiz extends Component{
     constructor(props){
@@ -55,7 +56,7 @@ class Quiz extends Component{
 
 
     render(){
-        console.log(this.props.match.params.id);
+      
         return(
           
             <div className = "container">
@@ -74,7 +75,10 @@ class Quiz extends Component{
                 }
                 {this.state.responses === 5 ? (<Result score = {this.state.score} playAgain = {this.playAgain}/>
                 ): null}
+
+           
             </div>
+           
         )
     }
 }

@@ -10,10 +10,10 @@ export default ({ QuizLinks }) => {
               <h3 className="section-subheading text-muted">Answer simple quiz and get the results right away!</h3>
             </div>
           </div>
-          <div className="row">
+          <div className="row" >
             {
                 QuizLinks && QuizLinks.map(({ title, caption }, index) => 
-                  <div className="col-md-4 col-sm-6 portfolio-item">
+                  <div className="col-md-4 col-sm-6 portfolio-item" key={index}>
                     <a className="portfolio-link" data-toggle="modal" href="Quizzes">
                         <div className="portfolio-hover">
                             <div className="portfolio-hover-content">
