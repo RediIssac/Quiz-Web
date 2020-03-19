@@ -37,15 +37,52 @@ import java.util.Optional;
 
 @RestController
 public class userController {
-	
+
 	@Autowired
     UserRepository userRepository;
-    	
+
     @RequestMapping(method=RequestMethod.POST, value="app/home")
     public User save(@RequestBody User user) {
         userRepository.save(user);
         return user;
     }
+
+		@RequestMapping(method=RequestMethod.PUT, value="/profile/{id}")
+	    public User update(@PathVariable String id, @RequestBody User updatedInfo) {
+			User userToBeupdated = userRepository.findById(id).get();
+			if(updatedInfo.getName() != null) {
+				userToBeupdated.setName(updatedInfo.getName());
+			}
+			if(updatedInfo.getAddress() != null) {
+				userToBeupdated.setAddress(updatedInfo.getAddress());
+			}
+			if(updatedInfo.getCity() != null) {
+				userToBeupdated.setCity(updatedInfo.getCity());
+			}
+			if(updatedInfo.getEmail() != null) {
+				userToBeupdated.setEmail(updatedInfo.getEmail());
+			}
+
+	        userRepository.save(userToBeupdated);
+	        return userToBeupdated;
+	    }
+
+		@RequestMapping(method=RequestMethod.POST, value="/profile/{id}")
+		public User quizGraded(@PathVariable String id, @RequestBody HashMap<String,String> quizPerformance) {
+			User userToBeupdated = userRepository.findById(id).get();
+		    if(quizPerformance.get("totalNumQuizzesTaken") != null) {
+					userToBeupdated.updateTotalNumQuizzesTaken();
+				}
+			if(quizPerformance.get("totalNumQuestionsTaken") != null) {
+			    userToBeupdated.updateTotalNumQuestionsTaken(Integer.parseInt(quizPerformance.get("totalNumQuestionsTaken")));
+			}
+			if(quizPerformance.get("totalNumCorrectAttemps") != null) {
+			    userToBeupdated.updateTotalNumCorrectAttemps(Integer.parseInt(quizPerformance.get("totalNumCorrectAttemps")));
+			}
+			userRepository.save(userToBeupdated);
+	        return userToBeupdated;
+			}
+		}
 
     @RequestMapping(method=RequestMethod.POST, value="app/signup")
     public User signup(@RequestBody User user){
@@ -56,9 +93,9 @@ public class userController {
         }
             userRepository.save(user);
             return user;
-        
+
 
     }
 
-            
+
 }
