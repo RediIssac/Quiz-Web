@@ -29,13 +29,14 @@ body{
   background-color:white;
 }
 .Portfolio{
-  background-color: rgba(114, 149, 223, 0.568);
-  min-height:  500px;
-  border: 1px solid #011f33;
+  background-color:  rgb(192, 203, 214);
+  min-height:  400px;
+  border: 1px solid #4592c2;
   text-align: center;
-  width: 90%;
+  width: 35%;
   margin: 40px auto;
   font-size: 1.0em;
+  color: rgb(3, 3, 3);
 }
 #to-do-form input{
   background-color: reb(27,112,137);
