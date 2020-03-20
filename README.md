@@ -15,16 +15,16 @@ To run this project
    # >npm start
    
 
-#What the web-app does?
+# What the web-app does?
 
 It lets u take a quiz and gives you the result.
 You can also create account and safe your user information.
 
-#Modified Requirements
+# Modified Requirements
 
 We did google authentication and hence we don't require the user to enter their username and password, rather we directly connect them
-to google sign up. This means we don't have access to let them edit their password, therefore we have modified the profile
-edit page where the user can only edit their email and user name but not password.
+to google sign up. This means we don't have access to let them edit their password and email, therefore we have modified the profile
+edit page where the user can only edit their user name but not password and email. The user needs to directly modify their google account inorder to edit those information.
 
 
 
