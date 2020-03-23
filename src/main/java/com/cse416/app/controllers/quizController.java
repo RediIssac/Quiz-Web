@@ -71,10 +71,10 @@ public class quizController {
 
 	@RequestMapping(method=RequestMethod.GET, value="/app/quizzes/{id}")
     public List<Map<String,String>>  questionsForSelectedQuiz(@PathVariable String id) {
-		String h = "$%7Bquiz.id%7D";
-		System.out.println("This is id " + id);
-		System.out.println(quizRepository.findAll());
-        //if(quizRepository.findById(id).isPresent()) {
+		//String h = "$%7Bquiz.id%7D";
+		//System.out.println("This is id " + id);
+		//System.out.println(quizRepository.findAll());
+        if(quizRepository.findById(id).isPresent()) {
         	
 
         	List<Map<String,String>> questionsWithChoices = new ArrayList<Map<String,String>>();
@@ -85,16 +85,16 @@ public class quizController {
         	
         	allQuestions.iterator().forEachRemaining(list::add);
         	
-        	list.stream().filter(question -> question.getQuizId().equals(h)).forEach(q -> {
+        	list.stream().filter(question -> question.getQuizId().equals(id)).forEach(q -> {
         		questionsWithChoices.add(q.getFullQuestion());
         	});
 
         	System.out.println(questionsWithChoices);
         	return questionsWithChoices;
         	
-        	//}
-       //System.out.println("Not found"); 	
-       //return null;
+        	}
+      	
+       return null;
 		
 		
        } 
