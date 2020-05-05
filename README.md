@@ -12,8 +12,9 @@ To run this project
      
 * Run the frontend
     Go to frontend folder directory in the Quiz-web repository you clonned in your terminal and type "npm start"
+    
    # >npm start
-   
+   If you encounter an error try "npm install" before "npm start"
 
 # What the web-app does?
 
