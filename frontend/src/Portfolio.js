@@ -14,17 +14,20 @@ import React, { Component } from 'react';
 class Portfolio extends Component {
     
     state = {
+      
+        name: "",
         email: "",
-        password: "",
-        name: ""
+        totalNumQuestionsTaken: 0,
+        totalNumCorrectAttemps: 0,
     }
+
     componentDidMount() {
 
         this.setState({
             name: localStorage.getItem("username"),
             email: localStorage.getItem("email"),
-            password: localStorage.getItem("totalNumCorrectAttemps")
-         
+            totalNumCorrectAttemps: localStorage.getItem("totalNumCorrectAttemps"),
+            totalNumQuestionsTaken: localStorage.getItem("totalNumQuestionsTaken")
 
         })
         
@@ -34,13 +37,15 @@ class Portfolio extends Component {
         
         e.preventDefault()
 
-        console.log(this.state.password)
+        console.log(this.state.name)
 
-        this.setState({
-            email: "",
-            password: "",
-            name: ""
-        })
+        axios.post('/user/update', {name: this.state.name,})
+
+        localStorage.setItem("username", this.state.name)
+
+        console.log(this.state.name)
+
+        window.location.reload(false);
     }
 
     onKeyPress = (e) => {
@@ -51,7 +56,7 @@ class Portfolio extends Component {
 
 
     render() {
-        const { email, password, name } = this.state 
+        const { name, email, totalNumCorrectAttemps, totalNumQuestionsTaken } = this.state 
 
         return (
 
@@ -59,23 +64,30 @@ class Portfolio extends Component {
                 <div className="align-items-Right cad-n">
                     <fieldset>
                         <legend>Profile </legend>
+
+                        <dt>Name</dt>
+                        <dd>{name}</dd>
+
                         <dt>Email</dt>
                         <dd>{email}</dd>
                         
-                        <dt>Name</dt>
-                        <dd>{name}</dd>
+
+                        <dt>Total Questions taken: </dt>
+                        <dd>{totalNumQuestionsTaken}</dd>
+
+                        <dt>Total Correct Attemps: </dt>
+                        <dd>{totalNumCorrectAttemps}</dd>
+
                         <dt></dt>
+
                     </fieldset>
                 </div>
           
                 <header>
                     <form id="to-do-form" onSubmit={this.onPressSubmit}>
-                        <input type="text" placeholder="Type Your Email" value={email} onChange={this.onKeyPress} name={'email'} />
-                        <input type="password" placeholder="Type Your password" value={password} onChange={this.onKeyPress} name={'password'} />
                         <input type="text" placeholder="Type your Name" value={name} onChange={this.onKeyPress} name={'name'} />
                         <button type="Edit">Edit</button>
                     </form>
-
                 </header>
 
 
@@ -83,21 +95,4 @@ class Portfolio extends Component {
         );
     }
 }
-// function Protfile({ user }) {
-//   const { email, password, name } = user || {};
-
-//   console.log("aaaa")
-//   return (
-//     <div>
-//       <h1>Profile</h1>
-//       <dt>Email</dt>
-//       <dd>{email}</dd>
-//       <dt>Password</dt>
-//       <dd>{password}</dd>
-//       <dt>Name</dt>
-//       <dd>{name}</dd>
-//     </div>
-//   );
-// }
-
 export default Portfolio;
